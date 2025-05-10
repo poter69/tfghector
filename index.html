@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Proyecto Fin de Grado - Héctor Núñez</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+  <style>
+    :root {
+      --neon: #D90429;
+      --bg: #0a0a0a;
+      --glass: rgba(255,255,255,0.05);
+    }
+    *, *::before, *::after {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: #fff;
+      overflow-x: hidden;
+    }
+    /* Sidebar */
+    .hamburger {
+      position: fixed; top: 1.5rem; right: 1.5rem;
+      z-index: 1100; background: none; border: none;
+      color: var(--neon); font-size: 2rem; cursor: pointer;
+      filter: drop-shadow(0 0 5px var(--neon));
+    }
+    nav.sidebar {
+      position: fixed; top: 0; right: -300px;
+      width: 300px; height: 100vh;
+      background: rgba(10,10,10,0.98);
+      backdrop-filter: blur(15px);
+      padding: 2rem 1.5rem;
+      display: flex; flex-direction: column; gap: 2rem;
+      transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      z-index: 1000; border-left: 2px solid var(--neon);
+      box-shadow: -10px 0 30px rgba(217,4,41,0.3);
+    }
+    nav.sidebar.open { transform: translateX(-300px); }
+    nav.sidebar a {
+      color: #bbb; text-decoration: none;
+      font-size: 1.2rem; padding: 0.8rem;
+      border-radius: 8px; overflow: hidden;
+      position: relative; transition: all 0.3s;
+    }
+    nav.sidebar a:hover, nav.sidebar a.active {
+      color: #fff; transform: translateX(-10px);
+    }
+    nav.sidebar a::before {
+      content: '';
+      position: absolute; top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(217,4,41,0.2), transparent);
+      transition: 0.4s;
+    }
+    nav.sidebar a:hover::before { left: 100%; }
+    /* Details in sidebar */
+    .details {
+      margin-top: auto; /* push to bottom */
+      padding-top: 1rem;
+      border-top: 1px solid rgba(217,4,41,0.3);
+    }
+    .details h4 {
+      font-size: 2rem; color: var(--neon);
+      margin-bottom: 1rem;
+    }
+    .details p {
+      font-size: 1.2rem; margin: 0.5rem 0;
+    }
+    .details .btn {
+      display: block; margin-top: 1rem;
+      text-align: center; font-size: 1.1rem;
+    }
+    /* Time info */
+    .time-info {
+      position: fixed; top: 1.5rem; left: 1.5rem;
+      background: rgba(217,4,41,0.1); padding: 1rem;
+      border-radius: 10px; border: 1px solid var(--neon);
+      z-index: 1000; backdrop-filter: blur(5px);
+      font-size: 0.9rem; color: #ddd;
+    }
+    /* Header with parallax */
+    header {
+      position: relative; height: 100vh; overflow: hidden;
+      display: flex; align-items: center; justify-content: center; text-align: center;
+    }
+    .parallax-bg {
+      position: absolute; top: 0; left: 0; width: 100%; height: 70%;
+      background: url('https://i.postimg.cc/Jh9FFCsW/WEB.png') center/cover;
+      filter: saturate(0.8) brightness(0.4) contrast(1.2);
+      transform: translateZ(-1px) scale(1.2);
+      opacity: 0.8; will-change: transform;
+    }
+    .header-content {
+      position: relative; z-index: 1;
+    }
+    .header-content h1 {
+      font-size: 4rem; color: var(--neon);
+      text-shadow: 0 0 20px rgba(217,4,41,0.6);
+    }
+    .header-content h2 {
+      font-size: 1.5rem; color: #ddd; font-weight: 300;
+      margin-top: 0.5rem;
+    }
+    /* Main content */
+    .container { padding: 2rem; max-width: 1200px; margin: 0 auto; }
+    section { margin: 6rem 0; }
+    h3 {
+      font-size: 2.5rem; color: var(--neon);
+      margin-bottom: 3rem; text-align: center;
+    }
+    /* Progress */
+    #progress { text-align: center; }
+    .circle {
+      position: relative; width: 200px; height: 200px;
+      border-radius: 50%;
+      background: conic-gradient(var(--neon) 0% 73%, #333 73% 100%);
+      margin: 0 auto; box-shadow: 0 0 30px rgba(217,4,41,0.6);
+      animation: glow 2s infinite alternate;
+    }
+    .circle span {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3rem; font-weight: 600;
+    }
+    @keyframes glow {
+      from { box-shadow: 0 0 10px var(--neon); }
+      to { box-shadow: 0 0 40px var(--neon); }
+    }
+    /* Videos */
+    .videos {
+      display: grid; grid-template-columns: 1fr; gap: 3rem;
+      max-width: 1000px; margin: 0 auto;
+    }
+    .video-card {
+      border-radius: 15px; overflow: hidden;
+      box-shadow: 0 0 30px rgba(217,4,41,0.3);
+      transition: transform 0.3s;
+    }
+    .video-card:hover { transform: scale(1.02); }
+    .video-card iframe { width: 100%; height: 500px; border: none; }
+    .btn {
+      display: inline-block; padding: 1rem 2rem;
+      background: var(--neon); color: #fff; border-radius: 50px;
+      text-decoration: none; transition: all 0.3s;
+    }
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(217,4,41,0.4);
+    }
+    /* Documents */
+    .downloads-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+      gap: 2rem; margin-top: 3rem;
+    }
+    .doc-block {
+      background: var(--glass); padding: 2rem; border-radius: 15px;
+      border: 1px solid rgba(217,4,41,0.3);
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    }
+    .doc-block:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(217,4,41,0.3);
+      border-color: var(--neon);
+    }
+    .doc-block.featured {
+      grid-column: 1 / -1;
+      background: linear-gradient(45deg, rgba(217,4,41,0.1), var(--glass));
+      border: 2px solid var(--neon);5:24 10/05/2025
+    }
+    .doc-block h4 {
+      color: var(--neon); margin-bottom: 1rem; font-size: 1.3rem;
+    }
+    .doc-block button {
+      width: 100%; padding: 1rem; background: var(--neon);
+      border: none; border-radius: 50px; color: #fff; cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .doc-block button:hover { transform: scale(1.05); }
+    /* Extras */
+    .snapin-list {
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .snapin-list a {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem; background: var(--glass); border-radius: 10px;
+      color: #fff; text-decoration: none;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .snapin-list a:hover {
+      background: rgba(217,4,41,0.1); transform: translateX(10px);
+    }
+    /* Particles */
+    #particles {
+      position: fixed; top:0; left:0; width:100%; height:100%;
+      z-index: -1; pointer-events: none;
+    }
+    @media (max-width:768px) {
+      .videos { grid-template-columns: 1fr; }
+      .video-card iframe { height: 250px; }
+      .header-content h1 { font-size: 2.5rem; }
+      h3 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particles"></canvas>
+  <div class="time-info">
+    Lectura: <strong>2h50min</strong><br>
+    Edición: <strong>40h10min</strong>
+  </div>
+  <button class="hamburger"><i class="fas fa-bars"></i></button>
+  <nav class="sidebar">
+    <a href="#home" class="active"><i class="fas fa-home"></i> Inicio</a>
+    <a href="#progress"><i class="fas fa-chart-pie"></i> Progreso</a>
+    <a href="#videos"><i class="fas fa-video"></i> Vídeos</a>
+    <a href="#docs"><i class="fas fa-file-alt"></i> Documentos</a>
+    <a href="#extras"><i class="fas fa-tools"></i> Extras</a>
+    <div id="doc-details" class="details"></div>
+  </nav>
+  <header id="home">
+    <div class="parallax-bg"></div>
+    <div class="header-content">
+      <h1>Proyecto Fin de Grado</h1>
+      <h2>HÉCTOR NÚÑEZ SÁEZ – IES GABRIEL GARCÍA MÁRQUEZ (Leganés)</h2>
+    </div>
+  </header>
+  <div class="container">
+    <section id="progress">
+      <div class="circle"><span>73%</span></div>
+      <p style="text-align:center; margin-top:1rem;">Progreso del proyecto</p>
+    </section>
+    <section id="videos">
+      <h3>Vídeos del Proyecto</h3>
+      <div class="videos">
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/-8hXi40F2sw" allowfullscreen></iframe>
+          <a class="btn" href="https://youtu.be/-8hXi40F2sw" target="_blank"><i class="fab fa-youtube"></i> Ver en YouTube</a>
+        </div>
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/gG7XqwUiYdY" allowfullscreen></iframe>
+          <a class="btn" href="https://youtu.be/gG7XqwUiYdY" target="_blank"><i class="fab fa-youtube"></i> Ver en YouTube</a>
+        </div>
+      </div>
+    </section>
+    <section id="docs">
+      <h3>Documentos del Proyecto</h3>
+      <div class="downloads-grid">
+        <div class="doc-block featured">
+          <h4>Memoria Principal</h4>
+          <button onclick="displayDetails('Memoria Principal',{words:'12052',pages:'79',edit:'1693 min',read:'48 min',percent:82,link:'https://iesluisvives-my.sharepoint.com/:b:/g/personal/hector_nunez_iesluisvives_org/Ee9_yOjJN65ApyFkFi3v6lgBvSBZ_kGh7XmoMj1XsFMTjg?e=wGnP71'})">Ver detalles</button>
+        </div>
+        <div class="doc-block">
+          <h4>Anexo I - Equipo de Desarrollo</h4>
+          <button onclick="displayDetails('Anexo I',{words:'1174',pages:'10',edit:'5 min',read:'6 min',percent:100,link:'https://iesluisvives-my.sharepoint.com/:b:/g/personal/hector_nunez_iesluisvives_org/EStHGf9W2ElAq5uSYLjtSBcB3W3FIDi9FHBODJXFiYD7ww?e=mqnnER'})">Ver detalles</button>
+        </div>
+        <div class="doc-block">
+          <h4>Anexo II - Entorno Virtual FOG</h4>
+          <button onclick="displayDetails('Anexo II',{words:'4616',pages:'39',edit:'11 min',read:'23 min',percent:100,link:'https://iesluisvives-my.sharepoint.com/:b:/g/personal/hector_nunez_iesluisvives_org/Ea2En0bolcZAt1iWy4ZsS4kBTHP3O06QmMrTKzVv4Cs2JQ?e=Iu0yGL'})">Ver detalles</button>
+        </div>
+        <div class="doc-block">
+          <h4>Anexo III - Instalación Servidor FOG</h4>
+          <button onclick="displayDetails('Anexo III',{words:'2289',pages:'16',edit:'8 min',read:'11 min',percent:100,link:'https://iesluisvives-my.sharepoint.com/:b:/g/personal/hector_nunez_iesluisvives_org/EUsVDzyb109Pmth324H0PqkBHZ1dBFRUHSSuU7WiqmHQEg?e=AAAbtm'})">Ver detalles</button>
+        </div>
+        <div class="doc-block">
+          <h4>Anexo IV - Entorno Virtual WDS</h4>
+          <button onclick="displayDetails('Anexo IV',{words:'7982',pages:'71',edit:'101 min',read:'40 min',percent:100,link:'https://iesluisvives-my.sharepoint.com/:b:/g/personal/hector_nunez_iesluisvives_org/ERZhjPDA_jxMsz-L30MGioQBanIOBB2WLNC1lk2l0eIZ0Q?e=UNfSei'})">Ver detalles</button>
+        </div>
+        <div class="doc-block">
+          <h4>Anexo V - Instalación Servidor WDS</h4>
+          <button onclick="displayDetails('Anexo V',{words:'2295',pages:'20',edit:'83 min',read:'11 min',percent:100,link:'https://iesluisvives-my.sharepoint.com/:b:/g/personal/hector_nunez_iesluisvives_org/EUysjFPhPAlJvAGsiddgZxoBtBVVWqoVzJ0jhEt6zQmbrQ?e=ZLIKfI'})">Ver detalles</button>
+        </div>
+        <div class="doc-block">
+          <h4>Anexo VI - Preparación Máquinas Clientes</h4>
+          <button onclick="displayDetails('Anexo VI',{words:'1644',pages:'20',edit:'45 min',read:'8 min',percent:100,link:'https://iesluisvives-my.sharepoint.com/:b:/g/personal/hector_nunez_iesluisvives_org/EZ1ZX1uA6BxMsLqGAB0QlYoBT_oQCQRgHnK9Kq_thfA1Fw?e=1V0uoU'})">Ver detalles</button>
+        </div>
+        <div class="doc-block">
+          <h4>Anexo VII - Ejemplos de Snapin</h4>
+          <button onclick="displayDetails('Anexo VII',{words:'2455',pages:'22',edit:'391 min',read:'13 min',percent:100,link:'https://iesluisvives-my.sharepoint.com/:b:/g/personal/hector_nunez_iesluisvives_org/EcB07JlDNnJJnyAv6KHDUggBUVPZKACyzmkLT5N8MHMBkA?e=tC4Fhw'})">Ver detalles</button>
+        </div>
+        <div class="doc-block">
+          <h4>Anexo VIII - Captura y Despliegue Ubuntu</h4>
+          <button onclick="displayDetails('Anexo VIII',{words:'?',pages:'?',edit:'? min',read:'? min',percent:0,link:'https://iesluisvives-my.sharepoint.com/:b:/g/personal/hector_nunez_iesluisvives_org/EdbhYzjSpINPlYh-YtlP-tkBuMvaFYhuL2cift8nN8USLg?e=qAxFSY'})">Ver detalles</button>
+        </div>
+        <div class="doc-block">
+          <h4>Anexo X - Glosario</h4>
+          <button onclick="displayDetails('Anexo X',{words:'1353',pages:'7',edit:'66 min',read:'10 min',percent:75,link:'https://iesluisvives-my.sharepoint.com/:b:/g/personal/hector_nunez_iesluisvives_org/ES-xHTbLUbROpngZjxHq4h0BIySoq6JLaHSE1KNfCZGWww?e=YTptox'})">Ver detalles</button>
+        </div>
+      </div>
+    </section>
+ <!-- Sección Extras -->
+        <section id="extras">
+            <h3>Extras Técnicos</h3>
+            <div class="downloads-grid">
+                <div class="doc-block featured" data-aos="zoom-in">
+                    <h4>Snapins Adjuntos</h4>
+                    <div class="snapin-list">
+                        <a href="https://iesluisvives-my.sharepoint.com/:u:/g/personal/hector_nunez_iesluisvives_org/ERuob7qRFUBFgnSdRAatHHgBovOQHNITPtcVbUFuo__bSw?e=SvKGQ0" target="_blank">
+                            <i class="fas fa-file-code"></i> rename_computer.cmd
+                        </a>
+                        <a href="https://iesluisvives-my.sharepoint.com/:u:/g/personal/hector_nunez_iesluisvives_org/EZEWQdNlX59Bkqvz6rBlA5MBCpGMpISuLbrY1XlcvNzDRw?e=qNnVGD" target="_blank">
+                            <i class="fas fa-laptop-code"></i> install_O365.bat
+                        </a>
+                        <a href="https://iesluisvives-my.sharepoint.com/:u:/g/personal/hector_nunez_iesluisvives_org/ETS9RNGbPuZCpdqK0RbPbLEBw6YtxioQBuDSJ1ZQ0Ga5Aw?e=JdUqya" target="_blank">
+                            <i class="fas fa-user-lock"></i> create_user_secure.ps1
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@0.2.43/bundled/lenis.min.js"></script>
+  <script>
+    const lenis = new Lenis({ smooth: true, lerp: 0.1 });
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from('.header-content h1', {
+      scrollTrigger: { trigger: 'header', start: 'top top', end: 'bottom top', scrub: true },
+      y: -100, opacity: 100, duration: 1.5
+    });
+    gsap.from('.header-content h2', {
+      scrollTrigger: { trigger: 'header', start: 'top top+=50', end: 'bottom top', scrub: true },
+      y: 100, opacity: 70, duration: 1.5
+    });
+    // Sidebar toggle
+    document.querySelector('.hamburger').addEventListener('click', () => {
+      document.querySelector('nav.sidebar').classList.toggle('open');
+    });
+    document.querySelectorAll('nav.sidebar a').forEach(a => {
+      a.addEventListener('click', () => document.querySelector('nav.sidebar').classList.remove('open'));
+    });
+    // Smooth scroll to sections
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+    // Display details in sidebar
+    function displayDetails(title, data) {
+	document.querySelector('nav.sidebar').classList.add('open');
+      const d = document.getElementById('doc-details');
+      d.innerHTML = `<h4>${title}</h4>
+        <p><strong>Palabras:</strong> ${data.words}</p>
+        <p><strong>Páginas:</strong> ${data.pages}</p>
+        <p><strong>Edición:</strong> ${data.edit}</p>
+        <p><strong>Lectura:</strong> ${data.read}</p>
+        <p><strong>Progreso:</strong> ${data.percent}%</p>
+        <a href="${data.link}" class="btn" target="_blank"><i class="fas fa-download"></i> Descargar PDF</a>`;
+    }
+    // Particles
+    class Particle {
+      constructor(c) { this.c = c; this.reset(); }
+      reset() { this.x = Math.random()*this.c.width; this.y = Math.random()*this.c.height; this.size = Math.random()*2; this.speed = Math.random()*0.5+0.1; this.angle = Math.random()*Math.PI*2; }
+      update() { this.x += Math.cos(this.angle)*this.speed; this.y += Math.sin(this.angle)*this.speed; if(this.x<0||this.x>this.c.width||this.y<0||this.y>this.c.height) this.reset(); }
+      draw() { this.c.ctx.fillStyle = `rgba(217,4,41,${this.size/2})`; this.c.ctx.beginPath(); this.c.ctx.arc(this.x,this.y,this.size,0,Math.PI*2); this.c.ctx.fill(); }
+    }
+    const canvas = { el: document.getElementById('particles'), ctx: document.getElementById('particles').getContext('2d'), width: window.innerWidth, height: window.innerHeight };
+    let particles = Array.from({ length: 100 }, () => new Particle(canvas));
+    function animate() { canvas.ctx.clearRect(0,0,canvas.width,canvas.height); particles.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(animate); }
+    window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+    animate();
+  </script>
+</body>
+</html>
