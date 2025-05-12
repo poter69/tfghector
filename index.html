@@ -347,6 +347,10 @@
   </div>
 <!-- Lenis (smooth scroll) y compensación para .time-info -->
 <script>
+  // 0) Evitar que Lenis transforme sidebar y time-info
+  document.querySelector('nav.sidebar').setAttribute('data-lenis-prevent', '');
+  document.querySelector('.time-info').setAttribute('data-lenis-prevent', '');
+
   // 1) Inject CSS para móvil (fuentes más pequeñas)
   const css = document.createElement('style');
   css.textContent = `
