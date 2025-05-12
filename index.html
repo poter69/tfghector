@@ -457,16 +457,18 @@
       })
     );
 
-   window.displayDetails = (title, data) => {
-  // 1) Abre el menú si está cerrado y cambia el icono
-  if (!sidebar.classList.contains('open')) {
-    sidebar.classList.add('open');
-    const icon = hamburger.querySelector('i');
-    icon.classList.remove('fa-bars');
-    icon.classList.add('fa-times');
-  }
+ window.displayDetails = (title, data) => {
+  // obtener de nuevo los elementos
+  const sidebar = document.querySelector('nav.sidebar');
+  const hamburger = document.querySelector('.hamburger');
+  const icon = hamburger.querySelector('i');
 
-  // 2) Inyecta el HTML de detalles
+  // abrir el menú y ajustar el icono
+  sidebar.classList.add('open');
+  icon.classList.remove('fa-bars');
+  icon.classList.add('fa-times');
+
+  // inyectar contenido
   const d = document.getElementById('doc-details');
   d.innerHTML = `
     <h4>${title}</h4>
@@ -480,14 +482,13 @@
     </a>
   `;
 
-  // 3) En móvil, desplaza el botón de descarga a la vista
+  // en móvil, desplazar el botón a la vista
   setTimeout(() => {
     const btn = d.querySelector('.btn');
-    if (btn) {
-      btn.scrollIntoView({ behavior: 'smooth', block: 'end' });
-    }
+    if (btn) btn.scrollIntoView({ behavior: 'smooth', block: 'end' });
   }, 50);
 };
+
 
     // 7) Partículas (idéntico a tu versión original, pero dentro de DOMContentLoaded)
     const canvasEl = document.getElementById('particles');
