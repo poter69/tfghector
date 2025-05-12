@@ -23,23 +23,28 @@
     }
     /* Sidebar */
     .hamburger {
-      position: fixed; top: 1.5rem; right: 1.5rem;
+      position: fixed; top: 1rem; right: 1rem;
       z-index: 1100; background: none; border: none;
-      color: var(--neon); font-size: 2rem; cursor: pointer;
+      color: var(--neon); font-size: 1.5rem; cursor: pointer;
       filter: drop-shadow(0 0 5px var(--neon));
+
     }
     nav.sidebar {
-      position: fixed; top: 0; right: -300px;
-      width: 300px; height: 100vh;
+      position: fixed; top: 0; right: -100%;
+      width: 100%; height: 100vh;
       background: rgba(10,10,10,0.98);
       backdrop-filter: blur(15px);
-      padding: 2rem 1.5rem;
+      padding: 1.5rem 1rem;
       display: flex; flex-direction: column; gap: 2rem;
       transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
       z-index: 1000; border-left: 2px solid var(--neon);
       box-shadow: -10px 0 30px rgba(217,4,41,0.3);
+      overflow-y: auto;
+
     }
-    nav.sidebar.open { transform: translateX(-300px); }
+    nav.sidebar.open { transform: translateX(-100%); }
+  .details h4 { font-size: 1.5rem; }
+  .details p { font-size: 1rem; }
     nav.sidebar a {
       color: #bbb; text-decoration: none;
       font-size: 1.2rem; padding: 0.8rem;
@@ -76,11 +81,11 @@
     }
     /* Time info */
     .time-info {
-      position: fixed; top: 1.5rem; left: 1.5rem;
-      background: rgba(217,4,41,0.1); padding: 1rem;
+      position: fixed; top: 1rem; left: 1rem;
+      background: rgba(217,4,41,0.1); padding: 0.8rem;
       border-radius: 10px; border: 1px solid var(--neon);
       z-index: 1000; backdrop-filter: blur(5px);
-      font-size: 0.9rem; color: #ddd;
+      font-size: 0.8rem; color: #ddd;
     }
     /* Header with parallax */
     header {
@@ -178,6 +183,12 @@
       width: 100%; padding: 1rem; background: var(--neon);
       border: none; border-radius: 50px; color: #fff; cursor: pointer;
       transition: transform 0.3s;
+      font-size: 0.9rem;
+      padding: 0.8rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 120px;
     }
     .doc-block button:hover { transform: scale(1.05); }
     /* Extras */
@@ -334,13 +345,29 @@
       scrollTrigger: { trigger: 'header', start: 'top top+=50', end: 'bottom top', scrub: true },
       y: 100, opacity: 70, duration: 1.5
     });
-    // Sidebar toggle
-    document.querySelector('.hamburger').addEventListener('click', () => {
-      document.querySelector('nav.sidebar').classList.toggle('open');
-    });
+   // Modifica el evento click del hamburger
+document.querySelector('.hamburger').addEventListener('click', () => {
+  const sidebar = document.querySelector('nav.sidebar');
+  sidebar.classList.toggle('open');
+  // Cambiar el icono
+  const icon = document.querySelector('.hamburger i');
+  icon.classList.toggle('fa-bars');
+  icon.classList.toggle('fa-times');
+});
     document.querySelectorAll('nav.sidebar a').forEach(a => {
       a.addEventListener('click', () => document.querySelector('nav.sidebar').classList.remove('open'));
     });
+	  // Cerrar menú al hacer clic fuera
+document.addEventListener('click', (e) => {
+  const sidebar = document.querySelector('nav.sidebar');
+  const hamburger = document.querySelector('.hamburger');
+  
+  if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
+    sidebar.classList.remove('open');
+    hamburger.querySelector('i').classList.add('fa-bars');
+    hamburger.querySelector('i').classList.remove('fa-times');
+  }
+});
     // Smooth scroll to sections
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
@@ -353,7 +380,7 @@
 	document.querySelector('nav.sidebar').classList.add('open');
       const d = document.getElementById('doc-details');
       d.innerHTML = `<h4>${title}</h4>
-        <p><strong>Palabras:</strong> ${data.words}</p>
+        <p><strong>Palabras:</strong> ${data.words}</p>			
         <p><strong>Páginas:</strong> ${data.pages}</p>
         <p><strong>Edición:</strong> ${data.edit}</p>
         <p><strong>Lectura:</strong> ${data.read}</p>
