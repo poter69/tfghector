@@ -457,31 +457,37 @@
       })
     );
 
-    // 6) Función displayDetails (abre menú + fuerza scroll interno)
-    window.displayDetails = (title, data) => {
-      if (sidebarEl && !sidebarEl.classList.contains('open')) {
-        sidebarEl.classList.add('open');
-        const icon = hamburger.querySelector('i');
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-times');
-      }
-      const d = document.getElementById('doc-details');
-      if (!d) return;
-      d.innerHTML = `
-        <h4>${title}</h4>
-        <p><strong>Palabras:</strong> ${data.words}</p>
-        <p><strong>Páginas:</strong> ${data.pages}</p>
-        <p><strong>Edición:</strong> ${data.edit}</p>
-        <p><strong>Lectura:</strong> ${data.read}</p>
-        <p><strong>Progreso:</strong> ${data.percent}%</p>
-        <a href="${data.link}" class="btn" target="_blank">
-          <i class="fas fa-download"></i> Descargar PDF
-        </a>
-      `;
-      setTimeout(() => {
-        sidebarEl.scrollTop = sidebarEl.scrollHeight;
-      }, 50);
-    };
+   window.displayDetails = (title, data) => {
+  // 1) Abre el menú si está cerrado y cambia el icono
+  if (!sidebar.classList.contains('open')) {
+    sidebar.classList.add('open');
+    const icon = hamburger.querySelector('i');
+    icon.classList.remove('fa-bars');
+    icon.classList.add('fa-times');
+  }
+
+  // 2) Inyecta el HTML de detalles
+  const d = document.getElementById('doc-details');
+  d.innerHTML = `
+    <h4>${title}</h4>
+    <p><strong>Palabras:</strong> ${data.words}</p>
+    <p><strong>Páginas:</strong> ${data.pages}</p>
+    <p><strong>Edición:</strong> ${data.edit}</p>
+    <p><strong>Lectura:</strong> ${data.read}</p>
+    <p><strong>Progreso:</strong> ${data.percent}%</p>
+    <a href="${data.link}" class="btn" target="_blank">
+      <i class="fas fa-download"></i> Descargar PDF
+    </a>
+  `;
+
+  // 3) En móvil, desplaza el botón de descarga a la vista
+  setTimeout(() => {
+    const btn = d.querySelector('.btn');
+    if (btn) {
+      btn.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+  }, 50);
+};
 
     // 7) Partículas (idéntico a tu versión original, pero dentro de DOMContentLoaded)
     const canvasEl = document.getElementById('particles');
