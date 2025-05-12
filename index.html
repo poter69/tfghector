@@ -346,64 +346,69 @@
 
   </div>
 <!-- Lenis (smooth scroll) y compensación para .time-info -->
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@0.2.43/bundled/lenis.min.js"></script>
 <script>
-  const lenis = new Lenis({
-    smooth: true,
-    lerp: 0.1,
-  });
+  // 1) Inject CSS para móvil (fuentes más pequeñas)
+  const css = document.createElement('style');
+  css.textContent = `
+    @media (max-width:768px) {
+      .time-info {
+        top: .5rem!important;
+        left: .5rem!important;
+        font-size: 0.7rem!important;
+        padding: .4rem .6rem!important;
+      }
+      nav.sidebar a,
+      nav.sidebar h4,
+      nav.sidebar p,
+      nav.sidebar .btn {
+        font-size: 0.9rem!important;
+      }
+      #doc-details .btn {
+        display: block;
+        width: auto;
+        white-space: normal;
+        margin-top: .5rem;
+        padding: .6rem 1rem!important;
+      }
+    }
+  `;
+  document.head.appendChild(css);
 
-  // Cada vez que Lenis hace scroll, revertimos el translate en .time-info
-  lenis.on('scroll', ({ scroll }) => {
-    document.querySelector('.time-info').style.transform = `translateY(${scroll}px)`;
-  });
+  // 2) Lenis smooth scroll sólo en pantallas anchas
+  if (window.innerWidth >= 768) {
+    // carga de la librería ya está hecha en el HTML
+    const lenis = new Lenis({ smooth: true, lerp: 0.1 });
 
-  function raf(time) {
-    lenis.raf(time);
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
     requestAnimationFrame(raf);
   }
-  requestAnimationFrame(raf);
-</script>
 
-<!-- GSAP Parallax (igual que antes) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
-<script>
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.from('.header-content h1', {
-    scrollTrigger: { trigger: 'header', start: 'top top', end: 'bottom top', scrub: true },
-    y: -100, opacity: 1, duration: 1.5
-  });
-  gsap.from('.header-content h2', {
-    scrollTrigger: { trigger: 'header', start: 'top top+=50', end: 'bottom top', scrub: true },
-    y: 100, opacity: 0.7, duration: 1.5
-  });
-</script>
-
-<!-- Lógica de menú y detalles -->
-<script>
+  // 3) Lógica de menú y detalles
   const hamburger = document.querySelector('.hamburger');
   const sidebar   = document.querySelector('nav.sidebar');
 
-  // Toggle menú + cambio de icono
+  // Toggle menú + icono
   hamburger.addEventListener('click', () => {
     sidebar.classList.toggle('open');
-    const icon = hamburger.querySelector('i');
-    icon.classList.toggle('fa-bars');
-    icon.classList.toggle('fa-times');
+    const i = hamburger.querySelector('i');
+    i.classList.toggle('fa-bars');
+    i.classList.toggle('fa-times');
   });
 
-  // Cerrar al clicar en enlaces
-  document.querySelectorAll('nav.sidebar a').forEach(a => {
+  // Cerrar al clicar en enlaces del menú
+  document.querySelectorAll('nav.sidebar a').forEach(a =>
     a.addEventListener('click', () => {
       sidebar.classList.remove('open');
-      const icon = hamburger.querySelector('i');
-      icon.classList.add('fa-bars');
-      icon.classList.remove('fa-times');
-    });
-  });
+      const i = hamburger.querySelector('i');
+      i.classList.add('fa-bars');
+      i.classList.remove('fa-times');
+    })
+  );
 
-  // Cerrar al clicar fuera, salvo detalles o hamburguesa
+  // Cerrar al clicar fuera (salvo sobre detalle o botón)
   document.addEventListener('click', e => {
     if (
       e.target.closest('.doc-block button') ||
@@ -412,28 +417,28 @@
     ) return;
     if (!sidebar.contains(e.target)) {
       sidebar.classList.remove('open');
-      const icon = hamburger.querySelector('i');
-      icon.classList.add('fa-bars');
-      icon.classList.remove('fa-times');
+      const i = hamburger.querySelector('i');
+      i.classList.add('fa-bars');
+      i.classList.remove('fa-times');
     }
   });
 
-  // Smooth scroll para anclas
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
+  // Smooth scroll nativo para anclas (en todas las pantallas)
+  document.querySelectorAll('a[href^="#"]').forEach(a =>
     a.addEventListener('click', e => {
       e.preventDefault();
       document.querySelector(a.getAttribute('href'))
               .scrollIntoView({ behavior: 'smooth' });
-    });
-  });
+    })
+  );
 
-  // Mostrar detalles, abrir menú + desplazar sidebar para ver el botón
-  function displayDetails(title, data) {
+  // Mostrar detalles + abrir menú + asegurar que se vea el botón
+  window.displayDetails = (title, data) => {
     if (!sidebar.classList.contains('open')) {
       sidebar.classList.add('open');
-      const icon = hamburger.querySelector('i');
-      icon.classList.remove('fa-bars');
-      icon.classList.add('fa-times');
+      const i = hamburger.querySelector('i');
+      i.classList.remove('fa-bars');
+      i.classList.add('fa-times');
     }
     const d = document.getElementById('doc-details');
     d.innerHTML = `
@@ -447,13 +452,13 @@
         <i class="fas fa-download"></i> Descargar PDF
       </a>
     `;
-    // Fuerza scroll interno para que se vea la sección de detalles en móvil
-    sidebar.scrollTop = sidebar.scrollHeight;
-  }
-</script>
+    // Esperamos un pelín y luego forzamos el scroll interno
+    setTimeout(() => {
+      sidebar.scrollTop = sidebar.scrollHeight;
+    }, 50);
+  };
 
-<!-- Partículas (sin cambios) -->
-<script>
+  // 4) Partículas (sin cambios)
   class Particle {
     constructor(c) { this.c = c; this.reset(); }
     reset() {
@@ -466,14 +471,12 @@
     update() {
       this.x += Math.cos(this.angle)*this.speed;
       this.y += Math.sin(this.angle)*this.speed;
-      if (this.x < 0 || this.x > this.c.width || this.y < 0 || this.y > this.c.height) {
-        this.reset();
-      }
+      if (this.x<0||this.x>this.c.width||this.y<0||this.y>this.c.height) this.reset();
     }
     draw() {
       this.c.ctx.fillStyle = `rgba(217,4,41,${this.size/2})`;
       this.c.ctx.beginPath();
-      this.c.ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+      this.c.ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
       this.c.ctx.fill();
     }
   }
@@ -486,7 +489,7 @@
   let particles = Array.from({ length: 100 }, () => new Particle(canvas));
   function animate() {
     canvas.ctx.clearRect(0,0,canvas.width,canvas.height);
-    particles.forEach(p => { p.update(); p.draw(); });
+    particles.forEach(p=>{p.update();p.draw();});
     requestAnimationFrame(animate);
   }
   window.addEventListener('resize', () => {
