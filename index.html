@@ -79,14 +79,17 @@
       padding: 0.8rem; width: 100%;
     }
     /* Time info */
-    .time-info {
-      position: fixed; top: 1.5rem; left: 1.5rem;
-      background: rgba(217,4,41,0.1); padding: 1rem;
-      border-radius: 10px; border: 1px solid var(--neon);
-      z-index: 1100; backdrop-filter: blur(5px);
-      font-size: 0.9rem; color: #ddd;
-      pointer-events: none;
-    }
+.time-info {
+  position: relative;
+  margin: 1.5rem auto 0;
+  padding: 1rem;
+  background: rgba(217,4,41,0.1);
+  border: 1px solid var(--neon);
+  border-radius: 10px;
+  max-width: 400px;
+  text-align: center;
+  color: #ddd;
+}
     /* Header con parallax */
     header {
       position: relative; height: 100vh; overflow: hidden;
@@ -227,20 +230,7 @@
         font-size: 1.5rem;
       }
 	    
-.time-info {
-  position: relative;      /* ya no es fixed */
-  margin: 1.5rem auto 0;   /* espacio con el h2 */
-  padding: 1rem;
-  background: rgba(217,4,41,0.1);
-  border: 1px solid var(--neon);
-  border-radius: 10px;
-  backdrop-filter: blur(5px);
-  font-size: 0.9rem;
-  color: #ddd;
-  max-width: 400px;
-  text-align: center;
-  pointer-events: auto;    /* vuelve a permitir interacción si la necesitas */
-}
+
     }
   </style>
 </head>
@@ -256,14 +246,18 @@
     <div id="doc-details" class="details"></div>
   </nav>
   <header id="home">
-    <div class="parallax-bg"></div>
-    <div class="header-content">
-      <h1>Proyecto Fin de Grado</h1>
-      <h2>HÉCTOR NÚÑEZ SÁEZ – IES GABRIEL GARCÍA MÁRQUEZ (Leganés)</h2>
-    Tiempo de Lectura Total: <strong>3h05min</strong><br>
-    Tiempo de Edición Total: <strong>47h53min</strong>
+  <div class="parallax-bg"></div>
+  <div class="header-content">
+    <h1>Proyecto Fin de Grado</h1>
+    <h2>HÉCTOR NÚÑEZ SÁEZ – IES GABRIEL GARCÍA MÁRQUEZ (Leganés)</h2>
+
+    <div class="time-info">
+      Tiempo de Lectura Total: <strong>3h05min</strong><br>
+      Tiempo de Edición Total: <strong>47h53min</strong>
     </div>
-  </header>
+  </div>
+</header>
+
   <div class="container">
     <section id="progress">
       <div class="circle"><span>81%</span></div>
@@ -398,9 +392,16 @@
         y: 100, opacity: 0.7, duration: 1.5
       });
       gsap.from('.time-info', {
-        scrollTrigger: { trigger: 'header', start: 'top top+=100', end: 'bottom top', scrub: true },
-        y: 50, opacity: 0, duration: 1.5
-      });
+  scrollTrigger: {
+    trigger: 'header',
+    start: 'top top+=100',
+    end: 'bottom top',
+    scrub: true
+  },
+  y: 50,
+  opacity: 0,
+  duration: 1.5
+});
     }
 
     // 3) Lenis smooth-scroll (solo en escritorio ≥768px, si Lenis existe)
