@@ -253,6 +253,14 @@ nav.sidebar.submenu .close-btn {
         right: 1rem;
         font-size: 1.5rem;
       }
+	    /* Oculta siempre el contenedor de detalles salvo en submenu */
+nav.sidebar .details {
+  display: none;
+}
+nav.sidebar.submenu .details {
+  display: block;
+}
+
 	    
 
     }
@@ -493,14 +501,21 @@ document.addEventListener('DOMContentLoaded', function() {
   };
 
   // 6) closeSubmenu: vuelve al menú completo
-  function closeSubmenu() {
-    if (!sidebarEl) return;
-    const icon = hamburger.querySelector('i');
-    sidebarEl.classList.remove('submenu');
-    // dejamos abierto para que el usuario elija otra sección
-    icon.classList.remove('fa-times');
-    icon.classList.add('fa-bars');
-  }
+function closeSubmenu() {
+  if (!sidebarEl) return;
+  const icon = hamburger.querySelector('i');
+
+  // Quitamos el modo "submenu"
+  sidebarEl.classList.remove('submenu');
+
+  // Limpiamos el HTML de detalles
+  const d = document.getElementById('doc-details');
+  if (d) d.innerHTML = '';
+
+  // Ajustamos el icono
+  icon.classList.remove('fa-times');
+  icon.classList.add('fa-bars');
+}
 
   // 7) Partículas (igual a tu versión original)
   (function(){
