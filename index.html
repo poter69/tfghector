@@ -1,3 +1,4 @@
+html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -23,28 +24,26 @@
     }
     /* Sidebar */
     .hamburger {
-      position: fixed; top: 1rem; right: 1rem;
+      position: fixed; top: 1.5rem; right: 1.5rem;
       z-index: 1100; background: none; border: none;
-      color: var(--neon); font-size: 1.5rem; cursor: pointer;
+      color: var(--neon); font-size: 2rem; cursor: pointer;
       filter: drop-shadow(0 0 5px var(--neon));
-
+      transition: transform 0.3s;
     }
+    .hamburger:hover { transform: scale(1.1); }
     nav.sidebar {
-      position: fixed; top: 0; right: -100%;
-      width: 100%; height: 100vh;
+      position: fixed; top: 0; right: -300px;
+      width: 300px; height: 100vh;
       background: rgba(10,10,10,0.98);
       backdrop-filter: blur(15px);
-      padding: 1.5rem 1rem;
+      padding: 2rem 1.5rem;
       display: flex; flex-direction: column; gap: 2rem;
       transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
       z-index: 1000; border-left: 2px solid var(--neon);
       box-shadow: -10px 0 30px rgba(217,4,41,0.3);
       overflow-y: auto;
-
     }
-    nav.sidebar.open { transform: translateX(-100%); }
-  .details h4 { font-size: 1.5rem; }
-  .details p { font-size: 1rem; }
+    nav.sidebar.open { transform: translateX(-300px); }
     nav.sidebar a {
       color: #bbb; text-decoration: none;
       font-size: 1.2rem; padding: 0.8rem;
@@ -64,30 +63,32 @@
     nav.sidebar a:hover::before { left: 100%; }
     /* Details in sidebar */
     .details {
-      margin-top: auto; /* push to bottom */
+      margin-top: auto;
       padding-top: 1rem;
       border-top: 1px solid rgba(217,4,41,0.3);
     }
     .details h4 {
-      font-size: 2rem; color: var(--neon);
+      font-size: 1.5rem; color: var(--neon);
       margin-bottom: 1rem;
     }
     .details p {
-      font-size: 1.2rem; margin: 0.5rem 0;
+      font-size: 1rem; margin: 0.5rem 0;
     }
     .details .btn {
       display: block; margin-top: 1rem;
-      text-align: center; font-size: 1.1rem;
+      text-align: center; font-size: 1rem;
+      padding: 0.8rem; width: 100%;
     }
     /* Time info */
     .time-info {
-      position: fixed; top: 1rem; left: 1rem;
-      background: rgba(217,4,41,0.1); padding: 0.8rem;
+      position: fixed; top: 1.5rem; left: 1.5rem;
+      background: rgba(217,4,41,0.1); padding: 1rem;
       border-radius: 10px; border: 1px solid var(--neon);
-      z-index: 1000; backdrop-filter: blur(5px);
-      font-size: 0.8rem; color: #ddd;
+      z-index: 1100; backdrop-filter: blur(5px);
+      font-size: 0.9rem; color: #ddd;
+      pointer-events: none;
     }
-    /* Header with parallax */
+    /* Header con parallax */
     header {
       position: relative; height: 100vh; overflow: hidden;
       display: flex; align-items: center; justify-content: center; text-align: center;
@@ -151,6 +152,7 @@
       display: inline-block; padding: 1rem 2rem;
       background: var(--neon); color: #fff; border-radius: 50px;
       text-decoration: none; transition: all 0.3s;
+      white-space: nowrap;
     }
     .btn:hover {
       transform: translateY(-3px);
@@ -174,7 +176,7 @@
     .doc-block.featured {
       grid-column: 1 / -1;
       background: linear-gradient(45deg, rgba(217,4,41,0.1), var(--glass));
-      border: 2px solid var(--neon);5:24 10/05/2025
+      border: 2px solid var(--neon);
     }
     .doc-block h4 {
       color: var(--neon); margin-bottom: 1rem; font-size: 1.3rem;
@@ -182,13 +184,7 @@
     .doc-block button {
       width: 100%; padding: 1rem; background: var(--neon);
       border: none; border-radius: 50px; color: #fff; cursor: pointer;
-      transition: transform 0.3s;
-      font-size: 0.9rem;
-      padding: 0.8rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      min-width: 120px;
+      transition: transform 0.3s; min-width: 120px;
     }
     .doc-block button:hover { transform: scale(1.05); }
     /* Extras */
@@ -214,6 +210,29 @@
       .video-card iframe { height: 250px; }
       .header-content h1 { font-size: 2.5rem; }
       h3 { font-size: 2rem; }
+      nav.sidebar {
+        width: 100%;
+        right: -100%;
+        padding: 1.5rem 1rem;
+      }
+      nav.sidebar.open { transform: translateX(-100%); }
+      .details h4 { font-size: 1.5rem; }
+      .details p { font-size: 1rem; }
+      .doc-block button {
+        font-size: 0.9rem;
+        padding: 0.8rem;
+      }
+      .hamburger {
+        top: 1rem;
+        right: 1rem;
+        font-size: 1.5rem;
+      }
+      .time-info {
+        top: 1rem;
+        left: 1rem;
+        padding: 0.8rem;
+        font-size: 0.8rem;
+      }
     }
   </style>
 </head>
