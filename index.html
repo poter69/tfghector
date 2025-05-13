@@ -260,7 +260,6 @@ nav.sidebar .details {
 nav.sidebar.submenu .details {
   display: block;
 }
-
 @media (prefers-color-scheme: light) {
   :root {
     --bg: #ffffff;
@@ -270,6 +269,7 @@ nav.sidebar.submenu .details {
 
   body {
     color: #111;
+    background: var(--bg);
   }
 
   nav.sidebar {
@@ -330,14 +330,13 @@ nav.sidebar.submenu .details {
     background: rgba(0,123,255,0.1);
   }
 
-  /* Partículas azules */
   canvas#particles {
     background: none !important;
   }
-   
+}
 
-    }
   </style>
+	
 </head>
 <body>
   <canvas id="particles"></canvas>
