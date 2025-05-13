@@ -191,6 +191,7 @@ h3 {
 .videos {
   display: grid; grid-template-columns: 1fr; gap: 3rem;
   max-width: 1000px; margin: 0 auto;
+  align-items: center; /* centra el botón debajo del iframe */
 }
 .video-card {
   border-radius: 15px; overflow: hidden;
@@ -199,6 +200,10 @@ h3 {
 }
 .video-card:hover { transform: scale(1.02); }
 .video-card iframe { width: 100%; height: 500px; border: none; }
+.video-card .btn {
+  margin-top: 1rem;
+  align-self: center; /* se asegura de que esté centrado */
+}
 
 /* Botón */
 .btn {
@@ -295,9 +300,6 @@ h3 {
     --glass: rgba(0, 0, 0, 0.05);
   }
 
-  .time-info {
-    color: #000; /* Se verá bien sobre fondo claro */
-  }
 
   body {
     color: #111;
@@ -332,11 +334,12 @@ h3 {
     background: linear-gradient(45deg, rgba(0,123,255,0.1), var(--glass));
   }
 
-  .time-info {
-    border: 1px solid var(--neon);
-    background: rgba(0,123,255,0.05);
-    color: #222;
-  }
+.time-info {
+  color: #000; /* o el que prefieras */
+  border: 1px solid var(--neon);
+  background: rgba(0,123,255,0.05);
+}
+
 
   .circle {
     background: conic-gradient(var(--neon) 0% 81%, #ccc 81% 100%);
