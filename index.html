@@ -304,11 +304,11 @@ h3 {
     --glass: rgba(0, 0, 0, 0.05);
   }
 
-
   body {
     color: #111;
     background: var(--bg);
   }
+
   nav.sidebar {
     background: rgba(255,255,255,0.95);
     border-left: 2px solid var(--neon);
@@ -338,7 +338,6 @@ h3 {
     background: linear-gradient(45deg, rgba(0,123,255,0.1), var(--glass));
   }
 
-
   .circle {
     background: conic-gradient(var(--neon) 0% 81%, #ccc 81% 100%);
     box-shadow: 0 0 30px rgba(0,123,255,0.4);
@@ -361,23 +360,20 @@ h3 {
   .snapin-list a:hover {
     background: rgba(0,123,255,0.1);
   }
-body.light-mode .time-info,
-html.light-mode .time-info,
-:root.light .time-info,
-body:not(.dark) .time-info,
-html:not(.dark) .time-info,
-.time-info {
-  color: #000 !important;
-  border: 1px solid var(--neon);
-  background: rgba(0,123,255,0.05);
-}
+
+  .time-info {
+    color: #000 !important;
+    background: rgba(0,123,255,0.05) !important;
+    border: 1px solid var(--neon) !important;
+  }
 
   canvas#particles {
     background: none !important;
-    z-index: -1 !important; /* 🔥 esto asegura que no tape nada */
+    z-index: -1 !important;
     pointer-events: none;
   }
 }
+
  </style>
 	
 </head>
