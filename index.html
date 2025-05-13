@@ -360,6 +360,8 @@ h3 {
 
   canvas#particles {
     background: none !important;
+    z-index: -1 !important; /* 🔥 esto asegura que no tape nada */
+    pointer-events: none;
   }
 }
 
