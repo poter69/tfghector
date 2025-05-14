@@ -296,11 +296,14 @@ h3 {
   }
 
   /* Time-info más ancho en móvil */
-  .time-info {
-    max-width: 90%;
-    margin: 1rem auto;
-    padding: 1rem;
-  }
+.time-info {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 90%;  /* ya lo tenías */
+}
+
 
   /* Ajustes tipográficos en detalles */
   .details h4 { font-size: 1.5rem; }
