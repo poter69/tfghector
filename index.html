@@ -689,42 +689,33 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   // === 5. Ver detalles de documentos (submenu) con modal en desktop ===
-  window.displayDetails = (title, data) => {
-    sidebar.classList.add('open', 'submenu');
-    const barIcon = hamburger.querySelector('i');
-    barIcon.classList.remove('fa-bars');
-    barIcon.classList.add('fa-times');
+  wwindow.displayDetails = (title, data) => {
+  sidebar.classList.add('open', 'submenu');
+  const barIcon = hamburger.querySelector('i');
+  barIcon.classList.remove('fa-bars');
+  barIcon.classList.add('fa-times');
 
-    const d = document.getElementById('doc-details');
-    d.innerHTML = `
-      <button class="close-btn">Cerrar</button>
-      <h4>${title}</h4>
-      <p><strong>Palabras:</strong> ${data.words}</p>
-      <p><strong>Páginas:</strong> ${data.pages}</p>
-      <p><strong>Edición:</strong> ${data.edit}</p>
-      <p><strong>Lectura:</strong> ${data.read}</p>
-      <p><strong>Progreso:</strong> ${data.percent}%</p>
-      <button id="openPdf" class="btn">
-        <i class="fas fa-file-pdf"></i> Abrir PDF
-      </button>
-    `;
+  const d = document.getElementById('doc-details');
+  d.innerHTML = `
+    <button class="close-btn">Cerrar</button>
+    <h4>${title}</h4>
+    <p><strong>Palabras:</strong> ${data.words}</p>
+    <p><strong>Páginas:</strong> ${data.pages}</p>
+    <p><strong>Edición:</strong> ${data.edit}</p>
+    <p><strong>Lectura:</strong> ${data.read}</p>
+    <p><strong>Progreso:</strong> ${data.percent}%</p>
+    <a href="${data.link}" class="btn" target="_blank">
+      <i class="fas fa-file-pdf"></i> Abrir PDF
+    </a>
+  `;
 
-    d.querySelector('.close-btn').addEventListener('click', () => {
-      sidebar.classList.remove('submenu');
-      d.innerHTML = '';
-      barIcon.classList.remove('fa-times');
-      barIcon.classList.add('fa-bars');
-    });
-
-    d.querySelector('#openPdf').addEventListener('click', () => {
-      if (window.innerWidth >= 768) {
-        document.getElementById('pdfFrame').src = data.link;
-        document.getElementById('pdfModal').style.display = 'flex';
-      } else {
-        window.open(data.link, '_blank');
-      }
-    });
-  };
+  d.querySelector('.close-btn').addEventListener('click', () => {
+    sidebar.classList.remove('submenu');
+    d.innerHTML = '';
+    barIcon.classList.remove('fa-times');
+    barIcon.classList.add('fa-bars');
+  });
+};
 
   // === 6. Partículas dinámicas según tema ===
   (function(){
