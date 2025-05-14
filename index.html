@@ -68,7 +68,7 @@ nav.sidebar {
   box-shadow: -10px 0 30px rgba(217,4,41,0.3);
   overflow-y: auto;
 }
-nav.sidebar.open { right: 0; }
+nav.sidebar.open { right: -300; }
 nav.sidebar a {
   color: #bbb; text-decoration: none;
   font-size: 1.2rem; padding: 0.8rem;
@@ -573,7 +573,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (toggleBtn) {
     toggleBtn.addEventListener("click", () => {
-      applySystemTheme();
+      setTheme(prefersDark.matches ? "dark" : "light");
+
       if (pullSound) {
         pullSound.currentTime = 0;
         pullSound.play();
@@ -585,15 +586,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   prefersDark.addEventListener("change", () => applySystemTheme());
   applySystemTheme();
-});
-
-  prefersDark.addEventListener("change", (e) => {
-    if (!localStorage.getItem("theme")) {
-      setTheme(e.matches ? "dark" : "light");
-    }
-  });
-
-  applyStoredOrSystemTheme();
 });
 
 // === 2) Lenis scroll solo en escritorio ===
