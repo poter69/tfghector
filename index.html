@@ -67,8 +67,12 @@ nav.sidebar {
   z-index: 1000; border-left: 2px solid var(--neon);
   box-shadow: -10px 0 30px rgba(217,4,41,0.3);
   overflow-y: auto;
+  right: -300px;           /* oculto 300px a la derecha */
+  transition: right 0.4s ease;
 }
-nav.sidebar.open { right: 0; }
+nav.sidebar.open {
+  right: 0;                /* al añadir .open aparece */
+}
 nav.sidebar a {
   color: #bbb; text-decoration: none;
   font-size: 1.2rem; padding: 0.8rem;
@@ -291,8 +295,19 @@ h3 {
   /* Sidebar full-width y abierto en móvil */
   nav.sidebar {
     width: 100%;
-    right: -100%;           
+    right: -100%;          /* oculto completamente */
     padding: 1.5rem 1rem;
+  }
+  header {
+    /* Mantén tu height:75vh; */
+    /* Solo cambiamos el align y el padding para no romper el fondo */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* sube todo al principio */
+    padding-top: 2rem;           /* ajusta este valor al gusto */
+  }
+	  .header-content {
+    margin-top: 1rem; /* espacio extra entre iconos y título */
   }
 
  .time-info {
@@ -300,15 +315,6 @@ h3 {
     margin: 1rem auto;
     padding: 1rem;
   }
-  header {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* sube todo al principio */
-    padding-top: 2rem;           /* ajusta este valor al gusto */
-    padding-bottom: 8rem;
-  }
- .header-content {
-    margin-top: 1rem; /* espacio extra entre iconos y título */
 
   /* Ajustes tipográficos en detalles */
   .details h4 { font-size: 1.5rem; }
@@ -363,14 +369,17 @@ canvas#particles {
   .doc-block {
     border: 1px solid rgba(0,123,255,0.3);
   }
+
   .doc-block:hover {
     border-color: var(--neon);
     box-shadow: 0 10px 20px rgba(0,123,255,0.3);
   }
+
   .doc-block.featured {
     border: 2px solid var(--neon);
     background: linear-gradient(45deg, rgba(0,123,255,0.1), var(--glass));
   }
+
   .circle {
     background: conic-gradient(var(--neon) 0% 81%, #ccc 81% 100%);
     box-shadow: 0 0 30px rgba(0,123,255,0.4);
@@ -379,14 +388,17 @@ canvas#particles {
   .circle span {
     color: #000;
   }
+
   .btn {
     background: var(--neon);
     color: #fff;
   }
+
   .snapin-list a {
     background: rgba(0, 0, 0, 0.05);
     color: #111;
   }
+
   .snapin-list a:hover {
     background: rgba(0,123,255,0.1);
   }
@@ -405,9 +417,13 @@ canvas#particles {
   transition: transform 0.3s ease, color 0.3s ease, filter 0.3s ease;
   filter: drop-shadow(0 0 4px var(--neon));
 }
+
+
+
 .theme-label {
   font-size: 0.8rem;
 }
+
 @media (max-width: 768px) {
   #themeToggle .theme-label {
     display: none;
@@ -431,12 +447,17 @@ canvas#particles {
   background: rgba(10,10,10,0.98);
   color: #fff;
 }
+
 :root[data-theme='dark'] nav.sidebar a {
   color: #fff;
 }
+
 :root[data-theme='dark'] nav.sidebar a:hover {
   color: #f1f1f1;
 }
+
+
+
 #themeToggle.animate i {
   transform: rotate(360deg);
   transition: transform 0.6s ease;
@@ -706,3 +727,4 @@ links.forEach(a =>
     animate();
   })();
 });
+</script>
