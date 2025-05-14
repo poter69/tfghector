@@ -380,24 +380,32 @@ h3 {
 }
 /* 🌗 Botón cambio de tema */
 #themeToggle {
-  position: absolute;
+  position: fixed;
   top: 1.2rem;
   left: 1.2rem;
   z-index: 2000;
   background: none;
   border: none;
   color: var(--neon);
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   cursor: pointer;
-  transition: transform 0.2s ease, color 0.3s ease;
+  transition: transform 0.3s ease, color 0.3s ease, filter 0.3s ease;
+  filter: drop-shadow(0 0 4px var(--neon));
 }
+#themeToggle {
+  position: fixed;
+  top: 1.2rem;
+  left: 1.2rem;
+  z-index: 2000;
+  background: none;
+  border: none;
+  color: var(--neon);
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease, filter 0.3s ease;
+  filter: drop-shadow(0 0 4px var(--neon));
 }
-#themeToggle i {
-  font-size: 1.2rem;
-}
-#themeToggle:hover {
-  transform: scale(1.2);
-  color: #fff;
+
 
 .theme-label {
   font-size: 0.8rem;
@@ -428,7 +436,9 @@ h3 {
 	
 </head>
 <body>
-<button id="themeToggle"
+<button id="themeToggle" aria-label="Cambiar tema" title="Cambiar tema">
+  <i class="fas fa-sun"></i>
+</button>
 
   <canvas id="particles"></canvas>
   <button class="hamburger"><i class="fas fa-bars"></i></button>
@@ -542,29 +552,41 @@ h3 {
 
   </div>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const sidebarEl   = document.querySelector('nav.sidebar');
-  const timeInfoEl  = document.querySelector('.time-info');
-  if (sidebarEl)  sidebarEl.setAttribute('data-lenis-prevent', '');
-  if (timeInfoEl) timeInfoEl.setAttribute('data-lenis-prevent', '');
-
-  // 🔄 GESTIÓN DEL TEMA (correctamente colocada dentro del DOMContentLoaded)
- const toggleBtn = document.getElementById("themeToggle");
+const toggleBtn = document.getElementById("themeToggle");
 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
 const setTheme = (mode) => {
   document.documentElement.setAttribute('data-theme', mode);
   localStorage.setItem('theme', mode);
+  toggleBtnIcon(mode);
+};
+
+const toggleBtnIcon = (mode) => {
+  const icon = toggleBtn.querySelector('i');
+  icon.className = mode === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
 };
 
 const applyStoredOrSystemTheme = () => {
   const storedTheme = localStorage.getItem('theme');
-  if (storedTheme) {
-    setTheme(storedTheme);
-  } else {
-    setTheme(prefersDark.matches ? 'dark' : 'light');
-  }
+  const theme = storedTheme || (prefersDark.matches ? 'dark' : 'light');
+  setTheme(theme);
 };
+
+applyStoredOrSystemTheme();
+
+if (toggleBtn) {
+  toggleBtn.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const newTheme = current === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+  });
+}
+
+prefersDark.addEventListener('change', (e) => {
+  if (!localStorage.getItem('theme')) {
+    setTheme(e.matches ? 'dark' : 'light');
+  }
+});
 
 // Aplica tema al cargar
 applyStoredOrSystemTheme();
