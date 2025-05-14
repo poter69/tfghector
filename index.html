@@ -599,7 +599,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const setTheme = (mode) => {
     document.documentElement.setAttribute("data-theme", mode);
     localStorage.setItem("theme", mode);
-    if (icon) icon.className = mode === "dark" ? "fas fa-sun" : "fas fa-moon";
+    if (icon) icon.className = mode === "dark" ? "fas fa-moon" : "fas fa-sun";
   };
 
   const applyStoredOrSystemTheme = () => {
@@ -647,6 +647,15 @@ if (hamburger && sidebarEl) {
     const icon = hamburger.querySelector('i');
     icon.classList.toggle('fa-bars');
     icon.classList.toggle('fa-times');
+
+    const theme = document.documentElement.getAttribute('data-theme');
+    if (theme === 'dark') {
+      sidebarEl.style.background = 'rgba(10,10,10,0.98)';
+      sidebarEl.style.color = '#fff';
+    } else {
+      sidebarEl.style.background = 'rgba(255,255,255,0.95)';
+      sidebarEl.style.color = '#000';
+    }
   });
 
   document.querySelectorAll('nav.sidebar a').forEach(a =>
@@ -749,8 +758,8 @@ function closeSubmenu() {
       }
     }
     draw() {
-      const isLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-      const color = isLight ? '0,123,255' : '217,4,41';
+      const theme = document.documentElement.getAttribute('data-theme');
+      const color = theme === 'light' ? '0,123,255' : '217,4,41';
       this.c.ctx.fillStyle = `rgba(${color},${this.size / 2})`;
       this.c.ctx.beginPath();
       this.c.ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -777,3 +786,4 @@ function closeSubmenu() {
   animateParticles();
 })();
 </script>
+
