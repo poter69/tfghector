@@ -430,6 +430,42 @@ h3 {
 :root[data-theme='dark'] .snapin-list a:hover {
   background: rgba(217,4,41,0.2);
 }
+	  .pull-cord {
+  position: relative;
+  width: 60px;
+  height: 120px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.cord {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 4px;
+  height: 80px;
+  background: #555;
+  transform: translateX(-50%);
+  transition: height 0.3s;
+}
+
+.bulb {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  background: #f1c40f;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  transition: background 0.3s;
+}
+
+[data-theme="dark"] .bulb {
+  background: #f39c12;
+}
+
 
 #themeToggle.animate i {
   transform: rotate(360deg);
@@ -440,8 +476,9 @@ h3 {
 	
 </head>
 <body>
-<button id="themeToggle" aria-label="Cambiar tema" title="Cambiar tema">
-  <i class="fas fa-sun"></i>
+<button id="themeToggle" class="pull-cord">
+  <div class="cord"></div>
+  <div class="bulb"></div>
 </button>
 
   <canvas id="particles"></canvas>
@@ -743,4 +780,32 @@ function closeSubmenu() {
 
   animateParticles();
 })();
+	const toggleBtn = document.getElementById("themeToggle");
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+function setTheme(mode) {
+  document.documentElement.setAttribute('data-theme', mode);
+  localStorage.setItem('theme', mode);
+}
+
+function applyStoredOrSystemTheme() {
+  const storedTheme = localStorage.getItem('theme');
+  const theme = storedTheme || (prefersDark.matches ? 'dark' : 'light');
+  setTheme(theme);
+}
+
+toggleBtn.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme');
+  const newTheme = current === 'dark' ? 'light' : 'dark';
+  setTheme(newTheme);
+});
+
+prefersDark.addEventListener('change', (e) => {
+  if (!localStorage.getItem('theme')) {
+    setTheme(e.matches ? 'dark' : 'light');
+  }
+});
+
+applyStoredOrSystemTheme();
+
 </script>
