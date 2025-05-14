@@ -305,7 +305,11 @@ h3 {
     font-size: 1.5rem;
   }
 }
-
+canvas#particles {
+    background: none !important;
+    z-index: -1 !important;
+    pointer-events: none;
+  }
 /* 🌞 Modo claro */
 :root[data-theme='light'] {
     --bg: #ffffff;
@@ -370,14 +374,6 @@ h3 {
     background: rgba(0,123,255,0.1);
   }
 
-
-
-  canvas#particles {
-    background: none !important;
-    z-index: -1 !important;
-    pointer-events: none;
-  }
-}
 /* 🌗 Botón cambio de tema */
 #themeToggle {
   position: fixed;
@@ -593,7 +589,7 @@ h3 {
 
   </div>
 <script>
-// === 1. Configuración de tema con sonido ===
+// === 1. Configuración de tema con icono sol/luna ===
 document.addEventListener("DOMContentLoaded", () => {
   const toggleBtn = document.getElementById("themeToggle");
   const icon = toggleBtn?.querySelector("i");
