@@ -63,12 +63,12 @@ nav.sidebar {
   backdrop-filter: blur(15px);
   padding: 2rem 1.5rem;
   display: flex; flex-direction: column; gap: 2rem;
-  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: right 0.4s ease;
   z-index: 1000; border-left: 2px solid var(--neon);
   box-shadow: -10px 0 30px rgba(217,4,41,0.3);
   overflow-y: auto;
 }
-nav.sidebar.open { right: -300; }
+nav.sidebar.open { right: 0; }
 nav.sidebar a {
   color: #bbb; text-decoration: none;
   font-size: 1.2rem; padding: 0.8rem;
@@ -292,7 +292,7 @@ h3 {
     right: -100%;
     padding: 1.5rem 1rem;
   }
-  nav.sidebar.open { transform: translateX(-100%); }
+nav.sidebar.open { right: 0; }
   .details h4 { font-size: 1.5rem; }
   .details p { font-size: 1rem; }
   .doc-block button {
@@ -556,191 +556,145 @@ canvas#particles {
   </div>
 </body>
 <script>
-// === 1. Configuración de tema con icono sol/luna ===
+// === 1. Tema claro/oscuro con preferencia de sistema y botón toggle temporal ===
 document.addEventListener("DOMContentLoaded", () => {
   const toggleBtn = document.getElementById("themeToggle");
-  const icon = toggleBtn?.querySelector("i");
-  const pullSound = document.getElementById("pullSound");
+  const themeIcon = toggleBtn.querySelector("i");
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
 
-  const setTheme = (mode) => {
+  // Función para aplicar tema
+  const setTheme = mode => {
     document.documentElement.setAttribute("data-theme", mode);
-    if (icon) icon.className = mode === "dark" ? "fas fa-moon" : "fas fa-sun";
+    themeIcon.className = mode === "dark" ? "fas fa-moon" : "fas fa-sun";
   };
 
-  // Siempre se basa en el sistema
-  const applySystemTheme = () => setTheme(prefersDark.matches ? "dark" : "light");
+  // Inicializa según sistema
+  setTheme(prefersDark.matches ? "dark" : "light");
+  // Reacciona a cambios del SO
+  prefersDark.addEventListener("change", e => setTheme(e.matches ? "dark" : "light"));
 
-  if (toggleBtn) {
-    toggleBtn.addEventListener("click", () => {
-      setTheme(prefersDark.matches ? "dark" : "light");
+  // Toggle manual (temporal) al hacer clic
+  toggleBtn.addEventListener("click", () => {
+    const current = document.documentElement.getAttribute("data-theme");
+    setTheme(current === "dark" ? "light" : "dark");
+    toggleBtn.classList.add("animate");
+    setTimeout(() => toggleBtn.classList.remove("animate"), 600);
+  });
 
-      if (pullSound) {
-        pullSound.currentTime = 0;
-        pullSound.play();
-      }
-      toggleBtn.classList.add("animate");
-      setTimeout(() => toggleBtn.classList.remove("animate"), 400);
-    });
+  // === 2. Lenis scroll (solo escritorio) ===
+  if (window.Lenis && window.innerWidth >= 768) {
+    const lenis = new Lenis({ smooth: true, lerp: 0.1 });
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
   }
 
-  prefersDark.addEventListener("change", () => applySystemTheme());
-  applySystemTheme();
-});
+  // === 3. Menú hamburguesa ===
+  const hamburger = document.querySelector('.hamburger');
+  const sidebar = document.querySelector('nav.sidebar');
 
-// === 2) Lenis scroll solo en escritorio ===
-if (window.Lenis && window.innerWidth >= 768) {
-  const lenis = new Lenis({ smooth: true, lerp: 0.1 });
-  function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-  requestAnimationFrame(raf);
-}
+  hamburger.addEventListener("click", () => {
+    sidebar.classList.toggle("open");
+    const barIcon = hamburger.querySelector("i");
+    barIcon.classList.toggle("fa-bars");
+    barIcon.classList.toggle("fa-times");
+  });
 
-// === 3) Menú lateral ===
-const hamburger = document.querySelector('.hamburger');
-const sidebarEl = document.querySelector('nav.sidebar');
-if (hamburger && sidebarEl) {
-  hamburger.addEventListener('click', () => {
-    sidebarEl.classList.toggle('open');
-    const icon = hamburger.querySelector('i');
-    icon.classList.toggle('fa-bars');
-    icon.classList.toggle('fa-times');
-
-    const theme = document.documentElement.getAttribute('data-theme');
-    if (theme === 'dark') {
-      sidebarEl.style.background = 'rgba(10,10,10,0.98)';
-      sidebarEl.style.color = '#fff';
-    } else {
-      sidebarEl.style.background = 'rgba(255,255,255,0.95)';
-      sidebarEl.style.color = '#000';
+  // Cerrar menú al hacer clic fuera o en enlace
+  document.addEventListener("click", e => {
+    if (
+      e.target.closest(".hamburger") ||
+      e.target.closest("nav.sidebar") ||
+      e.target.closest(".doc-block button") ||
+      e.target.closest("#doc-details")
+    ) return;
+    if (sidebar.classList.contains("open")) {
+      sidebar.classList.remove("open", "submenu");
+      const barIcon = hamburger.querySelector("i");
+      barIcon.classList.add("fa-bars");
+      barIcon.classList.remove("fa-times");
     }
   });
 
-  document.querySelectorAll('nav.sidebar a').forEach(a =>
-    a.addEventListener('click', () => {
-      sidebarEl.classList.remove('open');
-      const icon = hamburger.querySelector('i');
-      icon.classList.add('fa-bars');
-      icon.classList.remove('fa-times');
+  // === 4. Scroll suave interno ===
+  document.querySelectorAll('a[href^="#"]').forEach(a =>
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const tgt = document.querySelector(a.getAttribute('href'));
+      if (tgt) tgt.scrollIntoView({ behavior: 'smooth' });
     })
   );
 
-  document.addEventListener('click', e => {
-    if (
-      e.target.closest('.doc-block button') ||
-      e.target.closest('#doc-details') ||
-      hamburger.contains(e.target)
-    ) return;
-    if (!sidebarEl.contains(e.target)) {
-      sidebarEl.classList.remove('open', 'submenu');
-      const icon = hamburger.querySelector('i');
-      icon.classList.add('fa-bars');
-      icon.classList.remove('fa-times');
-    }
-  });
-}
+  // === 5. Ver detalles de documentos (submenu) ===
+  window.displayDetails = (title, data) => {
+    sidebar.classList.add('open', 'submenu');
+    const barIcon = hamburger.querySelector('i');
+    barIcon.classList.remove('fa-bars');
+    barIcon.classList.add('fa-times');
 
-// === 4) Scroll suave interno ===
-document.querySelectorAll('a[href^="#"]').forEach(a =>
-  a.addEventListener('click', e => {
-    e.preventDefault();
-    const tgt = document.querySelector(a.getAttribute('href'));
-    if (tgt) tgt.scrollIntoView({ behavior: 'smooth' });
-  })
-);
+    const d = document.getElementById('doc-details');
+    d.innerHTML = `
+      <button class="close-btn">Cerrar</button>
+      <h4>${title}</h4>
+      <p><strong>Palabras:</strong> ${data.words}</p>
+      <p><strong>Páginas:</strong> ${data.pages}</p>
+      <p><strong>Edición:</strong> ${data.edit}</p>
+      <p><strong>Lectura:</strong> ${data.read}</p>
+      <p><strong>Progreso:</strong> ${data.percent}%</p>
+      <a href="${data.link}" class="btn" target="_blank">
+        <i class="fas fa-download"></i> Descargar PDF
+      </a>
+    `;
+    // Cerrar submenu
+    d.querySelector('.close-btn').addEventListener('click', () => {
+      sidebar.classList.remove('submenu');
+      d.innerHTML = '';
+      barIcon.classList.remove('fa-times');
+      barIcon.classList.add('fa-bars');
+    });
+  };
 
-// === 5) Ver detalles de documentos ===
-window.displayDetails = (title, data) => {
-  if (!sidebarEl) return;
-  const icon = hamburger.querySelector('i');
-  sidebarEl.classList.add('open', 'submenu');
-  icon.classList.remove('fa-bars');
-  icon.classList.add('fa-times');
+  // === 6. Partículas dinámicas según tema ===
+  (function(){
+    const canvasEl = document.getElementById('particles');
+    if (!canvasEl) return;
+    const ctx = canvasEl.getContext('2d');
+    let width = window.innerWidth, height = window.innerHeight;
+    canvasEl.width = width; canvasEl.height = height;
 
-  const d = document.getElementById('doc-details');
-  d.innerHTML = `
-    <button class="close-btn">Cerrar</button>
-    <h4>${title}</h4>
-    <p><strong>Palabras:</strong> ${data.words}</p>
-    <p><strong>Páginas:</strong> ${data.pages}</p>
-    <p><strong>Edición:</strong> ${data.edit}</p>
-    <p><strong>Lectura:</strong> ${data.read}</p>
-    <p><strong>Progreso:</strong> ${data.percent}%</p>
-    <a href="${data.link}" class="btn" target="_blank">
-      <i class="fas fa-download"></i> Descargar PDF
-    </a>
-  `;
-  setTimeout(() => {
-    const btn = d.querySelector('.btn');
-    if (btn) btn.scrollIntoView({ behavior: 'smooth', block: 'end' });
-  }, 50);
-
-  d.querySelector('.close-btn').addEventListener('click', closeSubmenu);
-};
-
-// === 6) Cerrar submenu ===
-function closeSubmenu() {
-  if (!sidebarEl) return;
-  const icon = hamburger.querySelector('i');
-  sidebarEl.classList.remove('submenu');
-  const d = document.getElementById('doc-details');
-  if (d) d.innerHTML = '';
-  icon.classList.remove('fa-times');
-  icon.classList.add('fa-bars');
-}
-
-// === 7) Partículas con detección de modo ===
-(function(){
-  const canvasEl = document.getElementById('particles');
-  if (!canvasEl) return;
-  const ctx = canvasEl.getContext('2d');
-  let width = window.innerWidth;
-  let height = window.innerHeight;
-  canvasEl.width = width;
-  canvasEl.height = height;
-
-  class Particle {
-    constructor(c) { this.c = c; this.reset(); }
-    reset() {
-      this.x = Math.random() * this.c.width;
-      this.y = Math.random() * this.c.height;
-      this.size = Math.random() * 2;
-      this.speed = Math.random() * 0.5 + 0.1;
-      this.angle = Math.random() * Math.PI * 2;
-    }
-    update() {
-      this.x += Math.cos(this.angle) * this.speed;
-      this.y += Math.sin(this.angle) * this.speed;
-      if (this.x < 0 || this.x > this.c.width || this.y < 0 || this.y > this.c.height) {
-        this.reset();
+    class Particle {
+      constructor() { this.reset(); }
+      reset() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.size = Math.random() * 2;
+        this.speed = Math.random() * 0.5 + 0.1;
+        this.angle = Math.random() * Math.PI * 2;
+      }
+      update() {
+        this.x += Math.cos(this.angle) * this.speed;
+        this.y += Math.sin(this.angle) * this.speed;
+        if (this.x < 0 || this.x > width || this.y < 0 || this.y > height) this.reset();
+      }
+      draw() {
+        const theme = document.documentElement.getAttribute('data-theme');
+        const color = theme === 'light' ? '0,123,255' : '217,4,41';
+        ctx.fillStyle = `rgba(${color},${this.size/2})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+        ctx.fill();
       }
     }
-    draw() {
-      const theme = document.documentElement.getAttribute('data-theme');
-      const color = theme === 'light' ? '0,123,255' : '217,4,41';
-      this.c.ctx.fillStyle = `rgba(${color},${this.size / 2})`;
-      this.c.ctx.beginPath();
-      this.c.ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      this.c.ctx.fill();
+    const particles = Array.from({ length: 100 }, () => new Particle());
+    function animate() {
+      ctx.clearRect(0,0,width,height);
+      particles.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(animate);
     }
-  }
-
-  const particles = Array.from({ length: 100 }, () =>
-    new Particle({ el: canvasEl, ctx, width, height })
-  );
-  function animateParticles() {
-    ctx.clearRect(0, 0, width, height);
-    particles.forEach(p => { p.update(); p.draw(); });
-    requestAnimationFrame(animateParticles);
-  }
-
-  window.addEventListener('resize', () => {
-    width = window.innerWidth;
-    height = window.innerHeight;
-    canvasEl.width = width;
-    canvasEl.height = height;
-  });
-
-  animateParticles();
-})();
+    window.addEventListener('resize', () => {
+      width = window.innerWidth; height = window.innerHeight;
+      canvasEl.width = width; canvasEl.height = height;
+    });
+    animate();
+  })();
+});
 </script>
-
