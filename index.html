@@ -287,24 +287,39 @@ h3 {
   .video-card iframe { height: 250px; }
   .header-content h1 { font-size: 2.5rem; }
   h3 { font-size: 2rem; }
+
+  /* Sidebar full-width y abierto en móvil */
   nav.sidebar {
     width: 100%;
-    right: -100%;
+    right: 0;           
     padding: 1.5rem 1rem;
   }
-nav.sidebar.open { right: 0; }
+
+  /* Time-info más ancho en móvil */
+  .time-info {
+    max-width: 90%;
+    margin: 1rem auto;
+    padding: 1rem;
+  }
+
+  /* Ajustes tipográficos en detalles */
   .details h4 { font-size: 1.5rem; }
-  .details p { font-size: 1rem; }
+  .details p  { font-size: 1rem; }
+
+  /* Botón de documento más pequeño */
   .doc-block button {
     font-size: 0.9rem;
     padding: 0.8rem;
   }
+
+  /* Hamburguesa más pequeña */
   .hamburger {
     top: 1rem;
     right: 1rem;
     font-size: 1.5rem;
   }
 }
+
 canvas#particles {
     background: none !important;
     z-index: -1 !important;
@@ -615,15 +630,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // === 4. Scroll suave interno ===
-  document.querySelectorAll('a[href^="#"]').forEach(a =>
-    a.addEventListener('click', e => {
-      e.preventDefault();
-      const tgt = document.querySelector(a.getAttribute('href'));
-      if (tgt) tgt.scrollIntoView({ behavior: 'smooth' });
-    })
-  );
+// === 4) Scroll suave interno + cierre de menú en móvil ===
+const links = document.querySelectorAll('a[href^="#"]');
+links.forEach(a =>
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const tgt = document.querySelector(a.getAttribute('href'));
+    if (tgt) tgt.scrollIntoView({ behavior: 'smooth' });
 
+    // cerrar menú si está abierto (móvil)
+    if (sidebar.classList.contains('open')) {
+      sidebar.classList.remove('open');
+      const barIcon = hamburger.querySelector('i');
+      barIcon.classList.add('fa-bars');
+      barIcon.classList.remove('fa-times');
+    }
+  })
+);
   // === 5. Ver detalles de documentos (submenu) ===
   window.displayDetails = (title, data) => {
     sidebar.classList.add('open', 'submenu');
