@@ -23,7 +23,7 @@ nav.sidebar.submenu .details {
 /* 3. Estilo para el botón de cerrar dentro del submenu */
 nav.sidebar.submenu .close-btn {
   display: inline-block;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
   background: none;
   border: 1px solid var(--neon);
   color: var(--neon);
@@ -139,6 +139,9 @@ nav.sidebar.submenu .close-btn {
 header {
   position: relative; height: 75vh; overflow: hidden;
   display: flex; align-items: center; justify-content: center; text-align: center;
+}
+header + * {
+  margin-top: 0 !important; /* fuerza que no haya salto tras el header */
 }
 .parallax-bg {
   position: absolute; top: 0; left: 0; width: 100%; height: 70%;
