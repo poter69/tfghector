@@ -564,21 +564,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const setTheme = (mode) => {
     document.documentElement.setAttribute("data-theme", mode);
-    localStorage.setItem("theme", mode);
     if (icon) icon.className = mode === "dark" ? "fas fa-moon" : "fas fa-sun";
   };
 
-  const applyStoredOrSystemTheme = () => {
-    const stored = localStorage.getItem("theme");
-    const theme = stored || (prefersDark.matches ? "dark" : "light");
-    setTheme(theme);
-  };
+  // Siempre se basa en el sistema
+  const applySystemTheme = () => setTheme(prefersDark.matches ? "dark" : "light");
 
   if (toggleBtn) {
     toggleBtn.addEventListener("click", () => {
-      const current = document.documentElement.getAttribute("data-theme");
-      const newTheme = current === "dark" ? "light" : "dark";
-      setTheme(newTheme);
+      applySystemTheme();
       if (pullSound) {
         pullSound.currentTime = 0;
         pullSound.play();
@@ -587,6 +581,10 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => toggleBtn.classList.remove("animate"), 400);
     });
   }
+
+  prefersDark.addEventListener("change", () => applySystemTheme());
+  applySystemTheme();
+});
 
   prefersDark.addEventListener("change", (e) => {
     if (!localStorage.getItem("theme")) {
