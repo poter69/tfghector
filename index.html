@@ -13,7 +13,7 @@
 nav.sidebar.submenu > a {
   display: none;
 }
-
+<div class="container">
 /* 2. Ajusta el contenedor .details para ocupar todo el espacio disponible */
 nav.sidebar.submenu .details {
   flex: 1 1 auto;
@@ -422,6 +422,37 @@ canvas#particles {
   filter: drop-shadow(0 0 4px var(--neon));
 }
 
+#agradecimientos {
+  margin-top: 4rem;
+  padding: 3rem 1.5rem;
+  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(217,4,41,0.05));
+  border-top: 2px solid var(--neon);
+  border-bottom: 2px solid var(--neon);
+}
+
+.gratitude-block {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: inherit;
+}
+
+.gratitude-block h3 {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--neon);
+  margin-bottom: 2rem;
+  text-shadow: 0 0 10px rgba(217,4,41,0.2);
+}
+
+.gratitude-block p {
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
 
 
 .theme-label {
@@ -488,6 +519,7 @@ canvas#particles {
   <a href="#docs"><i class="fas fa-file-alt"></i> Documentos</a>
   <a href="#extras"><i class="fas fa-tools"></i> Extras</a>
   <a href="#curiosidades"><i class="fas fa-lightbulb"></i> Curiosidades</a>
+  <a href="#agradecimientos"><i class="fas fa-heart"></i> Agradecimientos</a>
   <div id="doc-details" class="details"></div>
 </nav>
 <header id="home">
@@ -643,6 +675,26 @@ canvas#particles {
         <li>🛠️ Archivos técnicos (scripts y código): <strong>6 Snapins</strong></li>
       </ul>
     </div>
+<section id="agradecimientos">
+  <div class="gratitude-block">
+    <h3>📝 Agradecimientos</h3>
+    <p>Quiero empezar agradeciendo a <strong>Francisco Mesa Fernández</strong>, tutor de este Trabajo de Fin de Grado, por su apoyo en cada fase del proyecto y, sobre todo, por el apasionante curso que hemos compartido. Del mismo modo, doy las gracias a <strong>Vicente Caro Muñoz</strong>, tutor de 2º ASIR A y de mis prácticas FCT, por sus consejos expertos y su dedicación constante, que han sido fundamentales para el desarrollo de mi titulación como Técnico Superior.</p>
+
+    <p>Extiendo mi gratitud al resto del profesorado del ciclo de Informática ASIR, tanto a quienes compartí clases como a quienes no, especialmente a <strong>Mario Murias</strong> y <strong>Diego Di Gionantonio</strong>, por nuestra relación anterior a ser alumno del centro.</p>
+
+    <p>Mi reconocimiento más cercano y afectuoso va para <strong>Darío Sola del Cerro</strong> y <strong>Laura Santamaría Domínguez</strong>. No solo me facilitaron la llegada cuando más oscuro pintaba todo, sino que se convirtieron en compañeros de café en muchos recreos. Siempre agradeceré el cariño con el que me han tratado y la ilusión que les supuso mi llegada al centro; os admiro muchísimo a ambos. Bien sabéis que vuestra cercanía hizo del centro un lugar acogedor y ameno durante mi etapa como técnico informático en ORBYS.</p>
+
+    <p>Quiero también agradecer a <strong>Daniel Espinosa</strong>, por acogerme tan bien cuando llegué a mitad de módulo y esos dos días de incredulidad en Toshiba, me llevo de ti siempre el profundo respeto y trato que me has hecho llegar durante todo el curso.</p>
+
+    <p>A mis amigas <strong>Patricia L. Flores</strong>, <strong>Lucía Gaviro</strong> y <strong>Alba García</strong>, gracias por ser ese apoyo incondicional y por llenar de alegría los momentos más intensos de este proceso académico.</p>
+
+    <p>Un reconocimiento muy especial para <strong>Nuria Martín</strong>, cuyo ejemplo de fortaleza y ánimo en un periodo especialmente difícil me ha enseñado el verdadero valor de la resiliencia y la esperanza.</p>
+
+    <p>Y, por encima de todo, a mi mujer, <strong>Cristina Quevedo Sierra</strong>: gracias por cuidar con tanto amor de Ana y Lía cuando yo no podía estar, por sostenerme en las horas de más presión y por ser mi guía y refugio cada día. Sin vuestro cariño y sacrificio, este logro no habría sido posible.</p>
+
+    <p style="margin-top: 2rem;"><strong>A todos vosotros, mi más sincero agradecimiento.</strong></p>
+  </div>
+</section>
 
   </div>
 </section>
