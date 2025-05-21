@@ -434,6 +434,11 @@ canvas#particles {
   margin: 0 auto 1.5rem auto;
   text-align: left;
   line-height: 1.8;
+  -webkit-hyphens: auto; /* Para navegadores WebKit como Safari */
+  -moz-hyphens: auto;    /* Para Firefox (aunque 'hyphens: auto' debería bastar) */
+  -ms-hyphens: auto;     /* Para Internet Explorer / Edge más antiguos */
+  hyphens: auto;         /* Estándar */
+  word-break: break-word; /* Como una medida adicional si la hifenación no es suficiente o para palabras extremadamente largas sin puntos de hifenación obvios */
 }
 
 #curiosidades .downloads-grid.paired {
