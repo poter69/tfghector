@@ -758,13 +758,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Reacciona a cambios del SO
   prefersDark.addEventListener("change", e => setTheme(e.matches ? "dark" : "light"));
 
-  // Toggle manual (temporal) al hacer clic
-  toggleBtn.addEventListener("click", () => {
-    const current = document.documentElement.getAttribute("data-theme");
-    setTheme(current === "dark" ? "light" : "dark");
-    toggleBtn.classList.add("animate");
-    setTimeout(() => toggleBtn.classList.remove("animate"), 600);
-  });
   // === 2. Lenis scroll (solo escritorio) ===
   if (window.Lenis && window.innerWidth >= 768) {
     const lenis = new Lenis({ smooth: true, lerp: 0.1 });
