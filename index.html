@@ -432,7 +432,7 @@ canvas#particles {
 }
 
 /* Bloques internos */
-.gratitude-block, .curiosity-block, #curiosidades .doc-block {
+.gratitude-block, .curiosity-block {
   max-width: 900px;
   margin: 0 auto;
   padding: 2rem;
@@ -451,14 +451,23 @@ canvas#particles {
   margin-bottom: 2rem;
   text-shadow: 0 0 10px rgba(217, 4, 41, 0.2);
 }
-
+#curiosidades .featured {
+  max-width: 500px;
+  margin: 0 auto 2rem;
+  border: 2px solid var(--neon);
+}
 #curiosidades .downloads-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+}
+#curiosidades .doc-block {
+  flex: 1 1 300px;
+  max-width: 380px;
 }
 
 /* Parrafos */
