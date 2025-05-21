@@ -452,6 +452,15 @@ canvas#particles {
   text-shadow: 0 0 10px rgba(217, 4, 41, 0.2);
 }
 
+#curiosidades .downloads-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
 /* Parrafos */
 #agradecimientos p, #curiosidades p, #curiosidades li {
   color: inherit;
@@ -511,6 +520,9 @@ canvas#particles {
 :root[data-theme='dark'] #curiosidades .doc-block,
 :root[data-theme='dark'] #curiosidades .doc-block * {
   color: #fff !important;
+}
+:root[data-theme='dark'] #agradecimientos {
+  color: #fff;
 }
 
   .header-content {
