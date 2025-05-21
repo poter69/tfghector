@@ -413,6 +413,7 @@ canvas#particles {
   gap: 2rem;
   flex-wrap: wrap;
 }
+	  
 
 /* 🌗 Botón cambio de tema */
 #themeToggle {
@@ -436,7 +437,13 @@ canvas#particles {
   line-height: 1.8;
 }
 
-
+#curiosidades .downloads-grid.paired {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
 
 .theme-label {
   font-size: 0.8rem;
@@ -635,35 +642,37 @@ canvas#particles {
 <section id="curiosidades">
   <h3>Curiosidades del Proyecto</h3>
   <div class="downloads-grid">
-
-   <div class="doc-block featured" style="grid-column: 1 / -1;">
+  <div class="doc-block featured">
     <h4>Resumen General</h4>
     <p><strong>Palabras totales:</strong> 53.717</p>
     <p><strong>Documentos:</strong> 10 anexos + memoria</p>
     <p><strong>Días dedicados:</strong> 59 días</p>
     <p><strong>Párrafos estimados:</strong> ~3.000</p>
   </div>
+</div>
 
-  <div class="downloads-subgrid">
-    <div class="doc-block">
-      <h4>Top Documentos</h4>
-      <ul>
-        <li><strong>Memoria Principal:</strong> 16.347 palabras</li>
-        <li><strong>Anexo IV:</strong> 7.982 palabras</li>
-        <li><strong>Anexo II:</strong> 4.616 palabras</li>
-      </ul>
-    </div>
-
-    <div class="doc-block">
-      <h4>Más detalles</h4>
-      <ul>
-        <li>🕒 Más tiempo editando: <strong>Memoria Principal</strong> (2243 min)</li>
-        <li>📖 Lectura total: <strong>~3h50min</strong></li>
-        <li>🎥 Vídeos en total: <strong>2</strong></li>
-        <li>🛠️ Snapins: <strong>6 scripts</strong></li>
-      </ul>
-    </div>
+<!-- Este bloque nuevo une Top Documentos y Más detalles en fila -->
+<div class="downloads-grid paired">
+  <div class="doc-block">
+    <h4>Top Documentos</h4>
+    <ul>
+      <li><strong>Memoria Principal:</strong> 16.347 palabras</li>
+      <li><strong>Anexo IV:</strong> 7.982 palabras</li>
+      <li><strong>Anexo II:</strong> 4.616 palabras</li>
+    </ul>
   </div>
+
+  <div class="doc-block">
+    <h4>Más detalles</h4>
+    <ul>
+      <li>🕒 Más tiempo editando: <strong>Memoria Principal</strong> (2243 min)</li>
+      <li>📖 Lectura total: <strong>~3h50min</strong></li>
+      <li>🎥 Vídeos en total: <strong>2</strong></li>
+      <li>🛠️ Snapins: <strong>6 scripts</strong></li>
+    </ul>
+  </div>
+</div>
+
 </section>
 
 <section id="agradecimientos">
