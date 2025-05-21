@@ -422,36 +422,54 @@ canvas#particles {
   filter: drop-shadow(0 0 4px var(--neon));
 }
 
-#agradecimientos {
+/* Estilo común para secciones destacadas */
+#curiosidades, #agradecimientos {
   margin-top: 4rem;
   padding: 3rem 1.5rem;
-  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(217,4,41,0.05));
   border-top: 2px solid var(--neon);
   border-bottom: 2px solid var(--neon);
+  background: rgba(255, 255, 255, 0.02);
 }
 
-.gratitude-block {
+/* Bloques internos */
+.gratitude-block, .curiosity-block, #curiosidades .doc-block {
   max-width: 900px;
   margin: 0 auto;
   padding: 2rem;
   border-radius: 12px;
-  background: rgba(255,255,255,0.04);
+  background: rgba(255, 255, 255, 0.04);
   font-size: 1.05rem;
-  line-height: 1.9;
+  line-height: 1.8;
   color: inherit;
 }
 
-.gratitude-block h3 {
+/* Título */
+#curiosidades h3, #agradecimientos h3 {
   text-align: center;
   font-size: 2rem;
   color: var(--neon);
   margin-bottom: 2rem;
-  text-shadow: 0 0 10px rgba(217,4,41,0.2);
+  text-shadow: 0 0 10px rgba(217, 4, 41, 0.2);
 }
 
-.gratitude-block p {
-  margin-bottom: 1.5rem;
+/* Parrafos */
+#agradecimientos p, #curiosidades p, #curiosidades li {
+  color: inherit;
+  font-size: 1rem;
   text-align: justify;
+}
+
+/* Modo claro: ajusta fondos */
+:root[data-theme='light'] #curiosidades,
+:root[data-theme='light'] #agradecimientos {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+:root[data-theme='light'] .gratitude-block,
+:root[data-theme='light'] .curiosity-block,
+:root[data-theme='light'] #curiosidades .doc-block {
+  background: rgba(0, 0, 0, 0.05);
+  color: #111;
 }
 
 
@@ -675,6 +693,8 @@ canvas#particles {
         <li>🛠️ Archivos técnicos (scripts y código): <strong>6 Snapins</strong></li>
       </ul>
     </div>
+  </div>
+</section>
 <section id="agradecimientos">
   <div class="gratitude-block">
     <h3>📝 Agradecimientos</h3>
@@ -693,9 +713,6 @@ canvas#particles {
     <p>Y, por encima de todo, a mi mujer, <strong>Cristina Quevedo Sierra</strong>: gracias por cuidar con tanto amor de Ana y Lía cuando yo no podía estar, por sostenerme en las horas de más presión y por ser mi guía y refugio cada día. Sin vuestro cariño y sacrificio, este logro no habría sido posible.</p>
 
     <p style="margin-top: 2rem;"><strong>A todos vosotros, mi más sincero agradecimiento.</strong></p>
-  </div>
-</section>
-
   </div>
 </section>
 
