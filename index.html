@@ -406,6 +406,13 @@ canvas#particles {
   .snapin-list a:hover {
     background: rgba(0,123,255,0.1);
   }
+	  
+.downloads-subgrid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
 
 /* 🌗 Botón cambio de tema */
 #themeToggle {
@@ -424,9 +431,11 @@ canvas#particles {
 
 #agradecimientos .doc-block p {
   max-width: 850px;
-  margin: 0 auto;
+  margin: 0 auto 1.5rem auto;
   text-align: justify;
+  line-height: 1.8;
 }
+
 
 
 .theme-label {
@@ -477,7 +486,8 @@ canvas#particles {
 #themeToggle.animate i {
   transform: rotate(360deg);
   transition: transform 0.6s ease;
-}	  
+}
+	  
  </style>
 </head>
 <body>
@@ -626,14 +636,15 @@ canvas#particles {
   <h3>Curiosidades del Proyecto</h3>
   <div class="downloads-grid">
 
-    <div class="doc-block featured">
-      <h4>Resumen General</h4>
-      <p><strong>Palabras totales:</strong> 53.717</p>
-      <p><strong>Documentos:</strong> 10 anexos + memoria</p>
-      <p><strong>Días dedicados:</strong> 59 días</p>
-      <p><strong>Párrafos estimados:</strong> ~3.000</p>
-    </div>
+   <div class="doc-block featured" style="grid-column: 1 / -1;">
+    <h4>Resumen General</h4>
+    <p><strong>Palabras totales:</strong> 53.717</p>
+    <p><strong>Documentos:</strong> 10 anexos + memoria</p>
+    <p><strong>Días dedicados:</strong> 59 días</p>
+    <p><strong>Párrafos estimados:</strong> ~3.000</p>
+  </div>
 
+  <div class="downloads-subgrid">
     <div class="doc-block">
       <h4>Top Documentos</h4>
       <ul>
@@ -653,7 +664,6 @@ canvas#particles {
       </ul>
     </div>
   </div>
-</section>
 
 <section id="agradecimientos">
   <h3>AGRADECIMIENTOS</h3>
