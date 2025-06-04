@@ -74,17 +74,17 @@
             box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
             max-width: 1100px; 
             width: 100%;
+            max-height: calc(100vh - 8rem); 
             text-align: left;
             border: 1px solid var(--border-dark);
-            /* display: flex; /* Removed for wrapper to control layout */
-            /* gap: 2rem; */
-            /* align-items: stretch; */
+            display: flex; 
+            flex-direction: column; 
         }
         
-        .slide-content-single-column {
-            display: block; 
+        .slide-content-single-column { 
+           align-items: center; 
+           text-align: center;
         }
-
 
         .slide-title {
             font-size: 2.2rem; 
@@ -208,7 +208,6 @@
         #portada .slide-content {
             background-color: rgba(0,0,0,0.55); 
             color: white;
-            text-align: center;
         }
         #portada .slide-title {
             color: white;
@@ -240,25 +239,36 @@
             color: #4b5563;
         }
 
-        .resource-button {
+        .resource-button, .youtube-button {
             background-color: var(--neon-red);
             color: white;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         .resource-button:hover {
-            background-color: #B70020; 
+            background-color: var(--neon-red-lighter); 
+            color: var(--dark-bg);
         }
+         html[data-theme='light'] .resource-button {
+            background-color: var(--neon-blue);
+         }
          html[data-theme='light'] .resource-button:hover {
-            background-color: #0056b3;
+            background-color: var(--neon-blue-lighter);
+            color: white;
         }
 
         .youtube-button {
             background-color: #CD201F; 
-            color: white;
         }
         .youtube-button:hover {
             background-color: #B00000; 
         }
+         html[data-theme='light'] .youtube-button {
+            background-color: #007bff; /* Blue for light theme */
+         }
+         html[data-theme='light'] .youtube-button:hover {
+            background-color: #0056b3;
+         }
+
         
         #themeToggle {
             position: fixed;
@@ -266,22 +276,20 @@
             left: 1.2rem;
             z-index: 1001; 
             background: none;
-            border: 1px solid var(--neon-red);
+            border: none; 
             color: var(--neon-red);
-            font-size: 1.2rem; 
+            font-size: 1.6rem; 
             cursor: pointer;
-            padding: 0.5rem;
-            border-radius: 50%;
-            transition: transform 0.3s ease, color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+            padding: 0.25rem; 
+            transition: transform 0.3s ease, color 0.3s ease, filter 0.3s ease;
             filter: drop-shadow(0 0 4px var(--neon-red));
         }
         #themeToggle:hover {
-            transform: scale(1.1);
-            background-color: var(--neon-red);
-            color: var(--dark-bg);
+            transform: scale(1.15);
+            color: var(--neon-red-lighter); 
         }
         html[data-theme='light'] #themeToggle:hover {
-             color: var(--light-bg);
+             color: var(--neon-blue-lighter);
         }
         
         .slide-image-header { 
@@ -298,28 +306,27 @@
              box-shadow: 0 4px 12px rgba(217,4,41,0.2);
         }
 
-        /* Styles for two-column layout */
-        .slide-content-columns { 
+        .slide-columns-container { 
             display: flex;
-            flex-direction: column; /* Title on top, then row for image/text */
-        }
-        .slide-content-columns-inner {
-            display: flex;
+            flex-grow: 1; 
             gap: 2.5rem; 
-            align-items: flex-start; 
+            align-items: stretch; 
             width: 100%;
+            overflow: hidden; 
         }
 
 
         .image-pane {
-            flex: 0 0 40%; /* Image takes 40% of width */
-            max-width: 40%;
+            flex: 0 0 45%; 
+            max-width: 45%;
             display: flex;
+            flex-direction: column; 
             justify-content: center;
             align-items: center; 
+            overflow: hidden; 
         }
         .image-pane img {
-            max-height: calc(80vh - 10rem); /* Adjusted max height */
+            max-height: calc(100vh - 16rem); 
             width: 100%; 
             object-fit: cover; 
             border-radius: 0.75rem;
@@ -334,41 +341,17 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start; 
-            max-height: calc(80vh - 10rem); 
+            max-height: calc(100vh - 16rem); 
             overflow-y: auto;
             padding-right: 15px; 
         }
 
-         /* Scrollbar styling for webkit browsers */
-        .text-pane::-webkit-scrollbar {
-            width: 8px;
-        }
-        .text-pane::-webkit-scrollbar-track {
-            background: rgba(128, 128, 128, 0.1);
-            border-radius: 10px;
-        }
-        .text-pane::-webkit-scrollbar-thumb {
-            background: rgba(128, 128, 128, 0.3);
-            border-radius: 10px;
-        }
-        html[data-theme='dark'] .text-pane::-webkit-scrollbar-thumb {
-             background: rgba(217, 4, 41, 0.4);
-        }
-        .text-pane::-webkit-scrollbar-thumb:hover {
-            background: rgba(128, 128, 128, 0.5);
-        }
-         html[data-theme='dark'] .text-pane::-webkit-scrollbar-thumb:hover {
-             background: rgba(217, 4, 41, 0.6);
-        }
-        
-        /* Wrapper for title + two-column layout */
-        /* .slide-layout-wrapper {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            height: 100%; 
-        } */
-
+        .text-pane::-webkit-scrollbar { width: 8px; }
+        .text-pane::-webkit-scrollbar-track { background: rgba(128, 128, 128, 0.1); border-radius: 10px; }
+        .text-pane::-webkit-scrollbar-thumb { background: rgba(128, 128, 128, 0.3); border-radius: 10px; }
+        html[data-theme='dark'] .text-pane::-webkit-scrollbar-thumb { background: rgba(217, 4, 41, 0.4); }
+        .text-pane::-webkit-scrollbar-thumb:hover { background: rgba(128, 128, 128, 0.5); }
+        html[data-theme='dark'] .text-pane::-webkit-scrollbar-thumb:hover { background: rgba(217, 4, 41, 0.6); }
 
     </style>
 </head>
@@ -385,7 +368,7 @@
                     <span class="font-bold text-xl">Héctor Núñez Sáez - TFG</span> 
                 </div>
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
+                    <div class="ml-10 flex items-baseline space-x-2">
                         <a href="#" data-slide="0" class="nav-menu-link px-3 py-2 rounded-md text-sm font-medium">Portada</a>
                         <a href="#" data-slide="1" class="nav-menu-link px-3 py-2 rounded-md text-sm font-medium">Intro</a>
                         <a href="#" data-slide="2" class="nav-menu-link px-3 py-2 rounded-md text-sm font-medium">Entorno</a>
@@ -394,6 +377,10 @@
                         <a href="#" data-slide="5" class="nav-menu-link px-3 py-2 rounded-md text-sm font-medium">Comp.</a>
                         <a href="#" data-slide="6" class="nav-menu-link px-3 py-2 rounded-md text-sm font-medium">Concl.</a>
                         <a href="#" data-slide="7" class="nav-menu-link px-3 py-2 rounded-md text-sm font-medium">Recursos</a>
+                        <a href="https://tfghector.pages.dev/" target="_blank" class="nav-menu-link px-3 py-2 rounded-md text-sm font-medium flex items-center">
+                            Web Principal
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1 lucide lucide-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -418,13 +405,13 @@
 
         <!-- Slide 2: Introducción y Objetivos -->
         <section id="introduccion" class="slide">
-            <div class="slide-content slide-content-columns">
-                <div class="slide-content-columns-inner">
+            <div class="slide-content">
+                <h2 class="slide-title">1. Introducción y Objetivos</h2>
+                <div class="slide-columns-container">
                     <div class="image-pane">
                         <img src="https://github.com/poter69/tfghector/blob/main/images/diapo2.jpg?raw=true" alt="Motivación del Proyecto">
                     </div>
                     <div class="text-pane">
-                        <h2 class="slide-title">1. Introducción y Objetivos</h2>
                         <p class="text-md mb-4">
                             Este proyecto no es solo un ejercicio académico; nace de una necesidad muy real. Tras una etapa profesional anterior, fui testigo de las dificultades que enfrentaban mis compañeros para realizar tareas de remaquetación de equipos de forma eficiente y consistente. Esa experiencia sembró la semilla de este TFG: buscar, implementar y dominar herramientas que realmente solucionen estos desafíos en el día a día de un administrador de sistemas.
                         </p>
@@ -456,13 +443,13 @@
 
         <!-- Slide 3: Entorno de Trabajo -->
         <section id="entorno" class="slide">
-            <div class="slide-content slide-content-columns">
-                 <div class="slide-content-columns-inner md:flex-row-reverse">
+            <div class="slide-content">
+                <h2 class="slide-title">2. Entorno de Laboratorio y Costes</h2>
+                 <div class="slide-columns-container md:flex-row-reverse"> <!-- Reversed order for image on right -->
                      <div class="image-pane">
                         <img src="https://github.com/poter69/tfghector/blob/main/images/diapo3.jpg?raw=true" alt="Entorno de Laboratorio">
                     </div>
                     <div class="text-pane">
-                        <h2 class="slide-title">2. Entorno de Laboratorio y Costes</h2>
                         <div class="card mb-4">
                             <h3 class="text-lg font-semibold text-red-500 mb-2">Configuración Principal</h3>
                              <ul class="list-disc list-inside space-y-1 text-sm">
@@ -492,13 +479,13 @@
 
         <!-- Slide 4: FOG Project - Qué es y Puesta en Marcha -->
         <section id="fog-project-que-es" class="slide">
-            <div class="slide-content slide-content-columns">
-                <div class="slide-content-columns-inner">
+            <div class="slide-content">
+                <h2 class="slide-title">3. FOG Project: Solución Open Source</h2>
+                <div class="slide-columns-container">
                     <div class="image-pane">
                          <img src="https://github.com/poter69/tfghector/blob/main/images/diapo4.jpg?raw=true" alt="Logo de FOG Project">
                     </div>
                     <div class="text-pane">
-                        <h2 class="slide-title">3. FOG Project: Solución Open Source</h2>
                         <div class="card fog-accent mb-4">
                             <h3 class="text-xl font-semibold text-green-600 mb-2 flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>
@@ -526,13 +513,13 @@
         
         <!-- Slide 5: FOG Project - Proceso Clave y Snapins -->
         <section id="fog-project-proceso" class="slide">
-            <div class="slide-content slide-content-columns">
-                <div class="slide-content-columns-inner md:flex-row-reverse">
+            <div class="slide-content">
+                <h2 class="slide-title">3.1 FOG: Proceso y Snapins</h2>
+                <div class="slide-columns-container md:flex-row-reverse"> <!-- Reversed order for image on right -->
                      <div class="image-pane">
                         <img src="https://github.com/poter69/tfghector/blob/main/images/diapo5.jpg?raw=true" alt="Flujo de Trabajo FOG">
                     </div>
                     <div class="text-pane">
-                        <h2 class="slide-title">3.1 FOG: Proceso y Snapins</h2>
                         <div class="card mb-4">
                             <h3 class="text-lg font-semibold text-red-500 mb-2">Proceso Clave</h3> 
                             <ol class="list-decimal list-inside text-sm space-y-1">
@@ -562,13 +549,13 @@
 
         <!-- Slide 6: WDS -->
         <section id="wds" class="slide">
-            <div class="slide-content slide-content-columns">
-                <div class="slide-content-columns-inner">
+            <div class="slide-content">
+                <h2 class="slide-title">4. Windows Deployment Services (WDS)</h2>
+                <div class="slide-columns-container">
                     <div class="image-pane">
                         <img src="https://github.com/poter69/tfghector/blob/main/images/diapo6.jpg?raw=true" alt="Logo de WDS">
                     </div>
                     <div class="text-pane">
-                        <h2 class="slide-title">4. Windows Deployment Services (WDS)</h2>
                         <div class="card mb-4">
                             <h3 class="text-xl font-semibold text-red-500 mb-2 flex items-center"> 
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><line x1="22" x2="2" y1="12" y2="12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/><line x1="6" x2="6.01" y1="16" y2="16"/><line x1="10" x2="10.01" y1="16" y2="16"/></svg>
@@ -596,13 +583,13 @@
 
         <!-- Slide 7: Comparativa -->
         <section id="comparativa" class="slide">
-            <div class="slide-content slide-content-columns">
-                <div class="slide-content-columns-inner md:flex-row-reverse">
+            <div class="slide-content">
+                <h2 class="slide-title">5. FOG vs. WDS: Veredicto y Costes</h2>
+                 <div class="slide-columns-container md:flex-row-reverse"> <!-- Reversed order for image on right -->
                      <div class="image-pane">
                         <img src="https://github.com/poter69/tfghector/blob/main/images/diapo7.jpg?raw=true" alt="Comparativa FOG vs WDS">
                     </div>
                     <div class="text-pane">
-                        <h2 class="slide-title">5. FOG vs. WDS: Veredicto y Costes</h2>
                         <div class="card overflow-x-auto mb-4">
                             <h3 class="text-lg font-semibold text-red-500 mb-2">Tabla Comparativa</h3>
                             <table class="w-full min-w-max text-left text-sm">
@@ -651,35 +638,37 @@
 
         <!-- Slide 8: Conclusiones -->
         <section id="conclusiones" class="slide">
-            <div class="slide-content slide-content-columns">
-                <div class="image-pane">
-                    <img src="https://github.com/poter69/tfghector/blob/main/images/diapo8.jpg?raw=true" alt="Conclusiones del Proyecto">
-                </div>
-                <div class="text-pane">
-                    <h2 class="slide-title">6. Conclusiones y Futuro</h2>
-                    <div class="card fog-accent mb-4">
-                        <h3 class="text-xl font-semibold text-green-600 mb-2 flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                            FOG Project: Superior
-                        </h3>
-                        <p class="text-sm">Recomendado por flexibilidad, multiplataforma, Snapins, sin coste y comunidad activa. Flujo completo y eficiente demostrado.</p>
+            <div class="slide-content">
+                <h2 class="slide-title">6. Conclusiones y Futuro</h2>
+                <div class="slide-columns-container">
+                    <div class="image-pane">
+                        <img src="https://github.com/poter69/tfghector/blob/main/images/diapo8.jpg?raw=true" alt="Conclusiones del Proyecto">
                     </div>
-                    <div class="card wds-accent mb-4">
-                        <h3 class="text-xl font-semibold text-red-600 mb-2 flex items-center">
-                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><circle cx="12" cy="12" r="10"/><line x1="15" x2="9" y1="9" y2="15"/><line x1="9" x2="15" y1="9" y2="15"/></svg>
-                            WDS: Limitado
-                        </h3>
-                        <p class="text-sm">Incompatibilidades en Win Server 2025 y obsolescencia. Uso futuro desaconsejable para nuevos proyectos.</p>
-                    </div>
-                    <div class="card">
-                         <h3 class="text-xl font-semibold text-red-500 mb-2 flex items-center"> 
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3.33 1.67 6.67 1.67 10 0v-5"/></svg>
-                            Aprendizaje y Líneas Futuras (FOG)
-                        </h3>
-                        <ul class="list-disc list-inside text-sm space-y-1">
-                            <li>Compatibilidad Secure Boot, integración AD, despliegue multinodo, VPN.</li>
-                            <li>Mejora de gestión de Snapins y documentación.</li>
-                        </ul>
+                    <div class="text-pane">
+                        <div class="card fog-accent mb-4">
+                            <h3 class="text-xl font-semibold text-green-600 mb-2 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                FOG Project: Superior
+                            </h3>
+                            <p class="text-sm">Recomendado por flexibilidad, multiplataforma, Snapins, sin coste y comunidad activa. Flujo completo y eficiente demostrado.</p>
+                        </div>
+                        <div class="card wds-accent mb-4">
+                            <h3 class="text-xl font-semibold text-red-600 mb-2 flex items-center">
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><circle cx="12" cy="12" r="10"/><line x1="15" x2="9" y1="9" y2="15"/><line x1="9" x2="15" y1="9" y2="15"/></svg>
+                                WDS: Limitado
+                            </h3>
+                            <p class="text-sm">Incompatibilidades en Win Server 2025 y obsolescencia. Uso futuro desaconsejable para nuevos proyectos.</p>
+                        </div>
+                        <div class="card">
+                             <h3 class="text-xl font-semibold text-red-500 mb-2 flex items-center"> 
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3.33 1.67 6.67 1.67 10 0v-5"/></svg>
+                                Aprendizaje y Líneas Futuras (FOG)
+                            </h3>
+                            <ul class="list-disc list-inside text-sm space-y-1">
+                                <li>Compatibilidad Secure Boot, integración AD, despliegue multinodo, VPN.</li>
+                                <li>Mejora de gestión de Snapins y documentación.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -687,13 +676,13 @@
         
         <!-- Slide 9: Recursos Adicionales -->
         <section id="recursos" class="slide">
-            <div class="slide-content slide-content-columns">
-                <div class="slide-content-columns-inner md:flex-row-reverse">
+            <div class="slide-content">
+                <h2 class="slide-title">7. Recursos Adicionales</h2>
+                 <div class="slide-columns-container md:flex-row-reverse"> <!-- Reversed order for image on right -->
                      <div class="image-pane">
                         <img src="https://github.com/poter69/tfghector/blob/main/images/diapo8.jpg?raw=true" alt="Recursos Adicionales"> 
                     </div>
                     <div class="text-pane">
-                        <h2 class="slide-title">7. Recursos Adicionales</h2>
                         <p class="mb-4">Para complementar esta presentación, he creado algunos recursos visuales y una web con más detalles del proyecto:</p>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div class="card">
@@ -810,21 +799,19 @@
                     slide.classList.toggle('active', isActive);
 
                     if (isActive && slide.id === 'comparativa') {
-                         setTimeout(() => { 
+                        setTimeout(() => { 
                             const bars = slide.querySelectorAll('.bar');
                             bars.forEach(bar => {
                                 const targetHeight = bar.dataset.value + '%';
-                                // Ensure the bar is actually visible and part of the DOM calculations
                                 if (bar.offsetParent !== null) { 
                                     bar.style.height = '0%'; 
+                                    bar.offsetHeight; 
                                     requestAnimationFrame(() => { 
-                                       requestAnimationFrame(() => { 
-                                           bar.style.height = targetHeight;
-                                       });
+                                        bar.style.height = targetHeight;
                                     });
                                 }
                             });
-                        }, 50); 
+                        }, 50); // Reduced delay, ensure it's enough for DOM to update
                     } else if (slide.id === 'comparativa') {
                        const bars = slide.querySelectorAll('.bar');
                        bars.forEach(bar => {
