@@ -475,6 +475,13 @@
             color: var(--neon-red);
             text-align: center;
         }
+        .final-slogan-slide {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%; /* Ensure it takes full height of slide-content */
+        }
 
 
     </style>
@@ -492,7 +499,7 @@
                     <span class="font-bold text-xl">Héctor Núñez Sáez - TFG</span> 
                 </div>
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-1"> <!-- Reduced space for more items -->
+                    <div class="ml-10 flex items-baseline space-x-1"> 
                         <a href="#" data-slide="0" class="nav-menu-link px-2 py-2 rounded-md text-xs font-medium">Portada</a>
                         <a href="#" data-slide="1" class="nav-menu-link px-2 py-2 rounded-md text-xs font-medium">Intro</a>
                         <a href="#" data-slide="2" class="nav-menu-link px-2 py-2 rounded-md text-xs font-medium">Entorno</a>
@@ -505,6 +512,7 @@
                         <a href="#" data-slide="9" class="nav-menu-link px-2 py-2 rounded-md text-xs font-medium">Conclusiones</a>
                         <a href="#" data-slide="10" class="nav-menu-link px-2 py-2 rounded-md text-xs font-medium">Recursos</a>
                         <a href="#" data-slide="11" class="nav-menu-link px-2 py-2 rounded-md text-xs font-medium">Agrad.</a>
+                        <a href="#" data-slide="12" class="nav-menu-link px-2 py-2 rounded-md text-xs font-medium">FIN</a>
                         <a href="https://tfghector.pages.dev/" class="nav-menu-link px-2 py-2 rounded-md text-xs font-medium flex items-center">
                             Web Principal
                             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
@@ -535,6 +543,7 @@
                 <a href="#" data-slide="9" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">Conclusiones</a>
                 <a href="#" data-slide="10" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">Recursos</a>
                 <a href="#" data-slide="11" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">Agrad.</a>
+                <a href="#" data-slide="12" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">FIN</a>
                 <a href="https://tfghector.pages.dev/" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">Web Principal</a>
             </div>
         </div>
@@ -801,24 +810,7 @@
                         </div>
                         <div class="card">
                              <h3 class="text-lg font-semibold mb-2 bar-chart-title">Coste Estimado vs. Flexibilidad</h3>
-                            <div class="bar-chart">
-                                <div class="flex flex-col items-center">
-                                    <div class="bar fog-bar" data-value="90" title="FOG Flexibilidad: 9/10">9/10</div>
-                                    <div class="bar-label">FOG (Flex.)</div>
-                                </div>
-                                <div class="flex flex-col items-center">
-                                    <div class="bar wds-bar" data-value="30" title="WDS Flexibilidad: 3/10">3/10</div>
-                                    <div class="bar-label">WDS (Flex.)</div>
-                                </div>
-                                <div class="flex flex-col items-center">
-                                    <div class="bar fog-bar" data-value="25" title="FOG Coste: ~6.500€">€</div> 
-                                    <div class="bar-label">FOG (Coste)</div>
-                                </div>
-                                <div class="flex flex-col items-center">
-                                    <div class="bar wds-bar" data-value="75" title="WDS Coste: >11.400€">€€€</div> 
-                                    <div class="bar-label">WDS (Coste)</div>
-                                </div>
-                            </div>
+                            <img src="https://github.com/poter69/tfghector/blob/main/images/raw.jpg?raw=true" alt="Gráfico Comparativo de Costes y Flexibilidad" class="w-full h-auto rounded-md">
                             <p class="text-xs mt-2">*Gráfico ilustrativo. Coste FOG ~6.5k€ vs WDS >11.4k€ (con licencias).</p>
                         </div>
                     </div>
@@ -965,8 +957,19 @@
                             <li>A mi madre, <strong>Purificación Sáez</strong>, por su apoyo y ánimo constante.</li>
                             <li>Y, por encima de todo, a mi mujer, <strong>Cristina Quevedo Sierra</strong>, y a mis hijas <strong>Ana y Lía</strong>, por su amor y sacrificio.</li>
                         </ul>
-                        <p class="slogan">Educación pública de tod@s para tod@s.</p>
                     </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Slide 13: FIN (index 12) -->
+        <section id="fin" class="slide">
+            <div class="slide-content slide-content-single-column">
+                <div class="final-slogan-slide">
+                    <img src="https://github.com/poter69/tfghector/blob/main/images/diapo2-8.png?raw=true" alt="Logo IES Gabriel García Márquez" class="h-32 w-auto mx-auto mb-8">
+                    <p class="slogan text-3xl md:text-4xl">ESCUELA PÚBLICA</p>
+                    <p class="slogan text-3xl md:text-4xl -mt-2">DE TOD@S PARA TOD@S</p>
+                     <p class="mt-12 text-2xl font-bold" style="color: var(--neon-red);">¡Gracias por su atención!</p>
                 </div>
             </div>
         </section>
