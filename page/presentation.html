@@ -240,33 +240,36 @@
         }
 
         .resource-button, .youtube-button {
+            /* Default dark theme styles */
             background-color: var(--neon-red);
             color: white;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
         .resource-button:hover {
             background-color: var(--neon-red-lighter); 
-            color: var(--dark-bg);
+            color: var(--dark-bg); /* Text color for dark theme hover */
         }
          html[data-theme='light'] .resource-button {
             background-color: var(--neon-blue);
+            color: white; /* Ensure text is white on blue button in light mode */
          }
          html[data-theme='light'] .resource-button:hover {
             background-color: var(--neon-blue-lighter);
-            color: white;
+            color: white; /* Ensure text remains white on hover in light mode */
         }
 
         .youtube-button {
-            background-color: #CD201F; 
-        }
-        .youtube-button:hover {
-            background-color: #B00000; 
+            background-color: #CD201F; /* YouTube's red */
         }
          html[data-theme='light'] .youtube-button {
-            background-color: #007bff; /* Blue for light theme */
+             background-color: #007bff; /* Blue for YouTube button in light mode */
+             color: white;
          }
+        .youtube-button:hover {
+            background-color: #B00000; /* Darker YouTube red */
+        }
          html[data-theme='light'] .youtube-button:hover {
-            background-color: #0056b3;
+            background-color: #0056b3; /* Darker blue for hover in light mode */
          }
 
         
@@ -377,7 +380,7 @@
                         <a href="#" data-slide="5" class="nav-menu-link px-3 py-2 rounded-md text-sm font-medium">Comp.</a>
                         <a href="#" data-slide="6" class="nav-menu-link px-3 py-2 rounded-md text-sm font-medium">Concl.</a>
                         <a href="#" data-slide="7" class="nav-menu-link px-3 py-2 rounded-md text-sm font-medium">Recursos</a>
-                        <a href="https://tfghector.pages.dev/" target="https://tfghector.pages.dev/" class="nav-menu-link px-3 py-2 rounded-md text-sm font-medium flex items-center">
+                        <a href="https://tfghector.pages.dev/" target="_blank" class="nav-menu-link px-3 py-2 rounded-md text-sm font-medium flex items-center">
                             Web Principal
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1 lucide lucide-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
                         </a>
@@ -409,7 +412,7 @@
                 <h2 class="slide-title">1. Introducción y Objetivos</h2>
                 <div class="slide-columns-container">
                     <div class="image-pane">
-                        <img src="https://github.com/poter69/tfghector/blob/main/images/diapo2-2.png?raw=true" alt="Motivación del Proyecto">
+                        <img src="https://github.com/poter69/tfghector/blob/main/images/diapo2.jpg?raw=true" alt="Motivación del Proyecto">
                     </div>
                     <div class="text-pane">
                         <p class="text-md mb-4">
@@ -445,7 +448,7 @@
         <section id="entorno" class="slide">
             <div class="slide-content">
                 <h2 class="slide-title">2. Entorno de Laboratorio y Costes</h2>
-                 <div class="slide-columns-container md:flex-row-reverse"> <!-- Reversed order for image on right -->
+                 <div class="slide-columns-container md:flex-row-reverse"> 
                      <div class="image-pane">
                         <img src="https://github.com/poter69/tfghector/blob/main/images/diapo3.jpg?raw=true" alt="Entorno de Laboratorio">
                     </div>
@@ -515,7 +518,7 @@
         <section id="fog-project-proceso" class="slide">
             <div class="slide-content">
                 <h2 class="slide-title">3.1 FOG: Proceso y Snapins</h2>
-                <div class="slide-columns-container md:flex-row-reverse"> <!-- Reversed order for image on right -->
+                <div class="slide-columns-container md:flex-row-reverse"> 
                      <div class="image-pane">
                         <img src="https://github.com/poter69/tfghector/blob/main/images/diapo5.jpg?raw=true" alt="Flujo de Trabajo FOG">
                     </div>
@@ -585,7 +588,7 @@
         <section id="comparativa" class="slide">
             <div class="slide-content">
                 <h2 class="slide-title">5. FOG vs. WDS: Veredicto y Costes</h2>
-                 <div class="slide-columns-container md:flex-row-reverse"> <!-- Reversed order for image on right -->
+                 <div class="slide-columns-container md:flex-row-reverse"> 
                      <div class="image-pane">
                         <img src="https://github.com/poter69/tfghector/blob/main/images/diapo7.jpg?raw=true" alt="Comparativa FOG vs WDS">
                     </div>
@@ -678,7 +681,7 @@
         <section id="recursos" class="slide">
             <div class="slide-content">
                 <h2 class="slide-title">7. Recursos Adicionales</h2>
-                 <div class="slide-columns-container md:flex-row-reverse"> <!-- Reversed order for image on right -->
+                 <div class="slide-columns-container md:flex-row-reverse"> 
                      <div class="image-pane">
                         <img src="https://github.com/poter69/tfghector/blob/main/images/diapo8.jpg?raw=true" alt="Recursos Adicionales"> 
                     </div>
@@ -811,7 +814,7 @@
                                     });
                                 }
                             });
-                        }, 50); // Reduced delay, ensure it's enough for DOM to update
+                        }, 50); 
                     } else if (slide.id === 'comparativa') {
                        const bars = slide.querySelectorAll('.bar');
                        bars.forEach(bar => {
@@ -825,7 +828,10 @@
                 });
                 
                 navMenuLinks.forEach(link => {
-                    link.classList.toggle('active-nav-link', parseInt(link.dataset.slide) === currentSlide);
+                    // Check if the link is for internal slide navigation
+                    if (link.dataset.slide) {
+                        link.classList.toggle('active-nav-link', parseInt(link.dataset.slide) === currentSlide);
+                    }
                 });
             }
 
@@ -850,8 +856,12 @@
 
             navMenuLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    goToSlide(parseInt(e.target.dataset.slide));
+                    // Only prevent default and navigate for internal slide links
+                    if (link.dataset.slide) {
+                        e.preventDefault();
+                        goToSlide(parseInt(e.target.dataset.slide));
+                    }
+                    // For external links (like Web Principal), the default browser action will occur.
                 });
             });
 
