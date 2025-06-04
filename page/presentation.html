@@ -48,7 +48,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 1rem; /* Reduced padding for mobile first */
+            padding: 1rem; 
             box-sizing: border-box;
             opacity: 0;
             transform: translateY(20px);
@@ -58,7 +58,7 @@
             left: 0;
             visibility: hidden;
         }
-        @media (min-width: 768px) { /* md breakpoint */
+        @media (min-width: 768px) { 
             .slide {
                 padding: 2rem;
             }
@@ -76,17 +76,17 @@
             background-color: var(--card-bg-dark);
             backdrop-filter: blur(12px);
             border-radius: 1rem; 
-            padding: 1.5rem; /* Base padding */
+            padding: 1.5rem; 
             box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
             max-width: 1100px; 
             width: 100%;
-            max-height: calc(100vh - 6rem); /* Adjusted for smaller base padding */
+            max-height: calc(100vh - 6rem); 
             text-align: left;
             border: 1px solid var(--border-dark);
             display: flex; 
             flex-direction: column; 
         }
-         @media (min-width: 768px) { /* md breakpoint */
+         @media (min-width: 768px) { 
             .slide-content {
                 padding: 2.5rem;
                 max-height: calc(100vh - 8rem);
@@ -99,7 +99,7 @@
         }
 
         .slide-title {
-            font-size: 1.8rem; /* Base font size */
+            font-size: 1.8rem; 
             font-weight: 800;
             color: var(--neon-red); 
             margin-bottom: 1rem;
@@ -107,7 +107,7 @@
             padding-bottom: 0.5rem;
             width: 100%; 
         }
-        @media (min-width: 768px) { /* md breakpoint */
+        @media (min-width: 768px) { 
             .slide-title {
                 font-size: 2.2rem;
                 margin-bottom: 1.5rem;
@@ -119,13 +119,13 @@
         .card {
             background-color: rgba(30,30,30,0.95); 
             border-radius: 0.75rem;
-            padding: 1rem; /* Base padding */
+            padding: 1rem; 
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
             transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
             border: 1px solid var(--border-dark);
             color: var(--light-text); 
         }
-         @media (min-width: 768px) { /* md breakpoint */
+         @media (min-width: 768px) { 
             .card {
                 padding: 1.5rem;
             }
@@ -156,7 +156,7 @@
             transform: translateY(-50%);
             background-color: rgba(217, 4, 41, 0.85); 
             color: white;
-            padding: 0.5rem; /* Smaller for mobile */
+            padding: 0.5rem; 
             border-radius: 50%;
             cursor: pointer;
             z-index: 30;
@@ -164,7 +164,7 @@
             border: none;
             box-shadow: 0 4px 12px rgba(217,4,41,0.3);
         }
-        @media (min-width: 768px) { /* md breakpoint */
+        @media (min-width: 768px) { 
             .nav-button {
                 padding: 0.75rem;
             }
@@ -181,9 +181,9 @@
             background-color: #0056b3; 
         }
 
-        #prev-slide { left: 10px; } /* Closer to edge for mobile */
+        #prev-slide { left: 10px; } 
         #next-slide { right: 10px; }
-         @media (min-width: 768px) { /* md breakpoint */
+         @media (min-width: 768px) { 
             #prev-slide { left: 20px; }
             #next-slide { right: 20px; }
         }
@@ -191,28 +191,28 @@
 
         .dots-container {
             position: fixed;
-            bottom: 10px; /* Closer to bottom for mobile */
+            bottom: 10px; 
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 8px; /* Smaller gap */
+            gap: 8px; 
             z-index: 30;
         }
-         @media (min-width: 768px) { /* md breakpoint */
+         @media (min-width: 768px) { 
             .dots-container {
                 bottom: 20px;
                 gap: 10px;
             }
         }
         .dot {
-            width: 10px; /* Smaller dots */
+            width: 10px; 
             height: 10px;
             background-color: rgba(156, 163, 175, 0.5); 
             border-radius: 50%;
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
-        @media (min-width: 768px) { /* md breakpoint */
+        @media (min-width: 768px) { 
             .dot {
                 width: 12px;
                 height: 12px;
@@ -277,18 +277,18 @@
             color: var(--neon-red); 
             transition: color 0.3s ease;
         }
-        .bar-chart { display: flex; align-items: flex-end; height: 150px; /* Adjusted for mobile */ gap: 0.5rem; margin-top: 0.5rem; width:100%; justify-content: space-around;}
-         @media (min-width: 768px) { /* md breakpoint */
+        .bar-chart { display: flex; align-items: flex-end; height: 150px; gap: 0.5rem; margin-top: 0.5rem; width:100%; justify-content: space-around;}
+         @media (min-width: 768px) { 
             .bar-chart { height: 180px; }
         }
-        .bar { width: 25px; /* Adjusted for mobile */ text-align: center; color: white; font-size: 0.6rem; padding-top: 0.25rem; border-radius: 0.25rem 0.25rem 0 0; transition: height 0.7s cubic-bezier(0.25, 0.1, 0.25, 1), background-color 0.3s ease; height: 0; }
-         @media (min-width: 768px) { /* md breakpoint */
+        .bar { width: 25px; text-align: center; color: white; font-size: 0.6rem; padding-top: 0.25rem; border-radius: 0.25rem 0.25rem 0 0; transition: height 0.7s cubic-bezier(0.25, 0.1, 0.25, 1), background-color 0.3s ease; height: 0; }
+         @media (min-width: 768px) { 
             .bar { width: 35px; font-size: 0.7rem; }
         }
         .fog-bar { background-color: #22c55e; }
         .wds-bar { background-color: #ef4444; }
         .bar-label { text-align: center; font-size: 0.7rem; color: #9ca3af; margin-top: 0.25rem; transition: color 0.3s ease;}
-         @media (min-width: 768px) { /* md breakpoint */
+         @media (min-width: 768px) { 
             .bar-label { font-size: 0.75rem; }
         }
         html[data-theme='light'] .bar-label {
@@ -360,7 +360,7 @@
             display: block;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-         @media (min-width: 768px) { /* md breakpoint */
+         @media (min-width: 768px) { 
             .slide-image-header { max-height: 250px; max-width: 70%;}
         }
         html[data-theme='dark'] .slide-image-header {
@@ -369,32 +369,32 @@
 
         .slide-columns-container { 
             display: flex;
-            flex-direction: column; /* Stack columns on mobile by default */
+            flex-direction: column; 
             flex-grow: 1; 
-            gap: 1.5rem; /* Base gap */
+            gap: 1.5rem; 
             align-items: stretch; 
             width: 100%;
             overflow: hidden; 
         }
-        @media (min-width: 768px) { /* md breakpoint */
+        @media (min-width: 768px) { 
             .slide-columns-container {
-                flex-direction: row; /* Side-by-side on larger screens */
+                flex-direction: row; 
                 gap: 2.5rem;
             }
         }
 
 
         .image-pane {
-            flex: 1 1 auto; /* Allow to grow and shrink on mobile */
-            max-width: 100%; /* Full width on mobile */
+            flex: 1 1 auto; 
+            max-width: 100%; 
             display: flex;
             flex-direction: column; 
             justify-content: center;
             align-items: center; 
             overflow: hidden; 
-            margin-bottom: 1rem; /* Space below image on mobile */
+            margin-bottom: 1rem; 
         }
-         @media (min-width: 768px) { /* md breakpoint */
+         @media (min-width: 768px) { 
             .image-pane {
                 flex: 0 0 45%; 
                 max-width: 45%;
@@ -402,13 +402,13 @@
             }
         }
         .image-pane img {
-            max-height: 40vh; /* Limit height on mobile */
+            max-height: 40vh; 
             width: 100%; 
             object-fit: cover; 
             border-radius: 0.75rem;
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
         }
-        @media (min-width: 768px) { /* md breakpoint */
+        @media (min-width: 768px) { 
              .image-pane img {
                 max-height: calc(100vh - 16rem); 
             }
@@ -422,11 +422,11 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start; 
-            max-height: calc(100vh - 20rem); /* Adjusted for mobile title + image */
+            max-height: calc(80vh - 10rem); /* Adjusted for mobile title + image */
             overflow-y: auto;
             padding-right: 5px; 
         }
-        @media (min-width: 768px) { /* md breakpoint */
+        @media (min-width: 768px) { 
             .text-pane {
                  max-height: calc(100vh - 16rem); 
                  padding-right: 15px;
@@ -444,23 +444,37 @@
         /* Navbar mobile adjustments */
         .mobile-nav-menu {
             position: absolute;
-            top: 4rem; /* Below navbar */
+            top: 4rem; 
             left: 0;
             right: 0;
-            background-color: var(--card-bg-dark); /* Match slide content bg */
+            background-color: var(--card-bg-dark); 
             border-bottom: 1px solid var(--border-dark);
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             padding: 1rem;
             flex-direction: column;
             gap: 0.5rem;
-            z-index: 19; /* Below navbar, above slides */
+            z-index: 19; 
         }
         .acknowledgements-text p {
-            margin-bottom: 0.75rem; /* 12px */
+            margin-bottom: 0.75rem; 
             line-height: 1.6;
         }
         .acknowledgements-text strong {
             color: var(--neon-red);
+        }
+        .acknowledgements-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .acknowledgements-list li {
+            margin-bottom: 0.5rem;
+        }
+        .slogan {
+            margin-top: 2rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--neon-red);
+            text-align: center;
         }
 
 
@@ -495,7 +509,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="md:hidden"> <!-- Botón de hamburguesa para móvil -->
+                <div class="md:hidden"> 
                     <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-[var(--light-text)] hover:text-white hover:bg-[var(--neon-red)] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
                         <span class="sr-only">Abrir menú principal</span>
                         <i class="fas fa-bars block h-6 w-6"></i>
@@ -504,7 +518,7 @@
                 </div>
             </div>
         </div>
-        <!-- Menú móvil -->
+        
         <div class="md:hidden hidden" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 mobile-nav-menu">
                 <a href="#" data-slide="0" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">Portada</a>
@@ -866,16 +880,18 @@
                         <img src="https://github.com/poter69/tfghector/blob/main/images/diapo1.jpg?raw=true" alt="Agradecimientos">
                     </div>
                     <div class="text-pane acknowledgements-text">
-                        <p>Quiero empezar agradeciendo a <strong>Francisco Mesa Fernández</strong>, tutor de este Trabajo de Fin de Grado, por su apoyo en cada fase del proyecto y, sobre todo, por el apasionante curso que hemos compartido.</p>
-                        <p>Del mismo modo, doy las gracias a <strong>Vicente Caro Muñoz</strong>, tutor de 2º ASIR A y de mis prácticas FCT, por sus consejos expertos y su dedicación constante, que han sido fundamentales para el desarrollo de mi titulación como Técnico Superior.</p>
-                        <p>Extiendo mi gratitud al resto del profesorado del ciclo de Informática ASIR, tanto a quienes compartí clases como a quienes no, especialmente a <strong>Mario Murias</strong> y <strong>Diego Di Gionantonio</strong>, por nuestra relación anterior a ser alumno del centro.</p>
-                        <p>Mi reconocimiento más cercano y afectuoso va para <strong>Darío Sola del Cerro</strong> y <strong>Laura Santamaría Domínguez</strong>. No solo me facilitaron la llegada cuando más oscuro pintaba todo, sino que se convirtieron en compañeros de café en muchos recreos. Siempre agradeceré el cariño con el que me habéis tratado y la ilusión que os supuso mi llegada al centro; os admiro muchísimo a ambos. Bien sabéis que vuestra cercanía hizo del centro un lugar acogedor y ameno durante mi etapa como técnico informático en ORBYS.</p>
-                        <p>Quiero también agradecer a <strong>Daniel Espinosa</strong>, por acogerme tan bien cuando llegué a mitad de módulo y esos dos días de incredulidad en Toshiba, me llevo de ti el siempre profundo respeto y trato qué me has hecho llegar durante todo el curso.</p>
-                        <p>A mis amigas <strong>Patricia L. Flores</strong>, <strong>Lucía Gaviro</strong> y <strong>Alba García</strong>, gracias por ser ese apoyo incondicional y por llenar de alegría los momentos más intensos de este proceso académico.</p>
-                        <p>Un reconocimiento muy especial para <strong>Nuria Martín</strong>, cuyo ejemplo de fortaleza y ánimo en un periodo especialmente difícil me ha enseñado el verdadero valor de la resiliencia y la esperanza.</p>
-                        <p>También quiero expresar mi gratitud a mi madre, <strong>Purificación Sáez</strong>, por su apoyo incondicional y su ánimo para retomar mis estudios, así como por ser siempre mi sostén en tantas facetas de la vida.</p>
-                        <p>Y, por encima de todo, a mi mujer, <strong>Cristina Quevedo Sierra</strong>: gracias por cuidar con tanto amor de <strong>Ana y Lía</strong> cuando yo no podía estar, por sostenerme en las horas de más presión y por ser mi guía y refugio cada día. Sin vuestro cariño y sacrificio, este logro no habría sido posible.</p>
-                        <p class="mt-6 text-center text-2xl font-bold" style="color: var(--neon-red);">¡Gracias por su atención!</p>
+                        <ul class="acknowledgements-list text-sm">
+                            <li>A <strong>Francisco Mesa Fernández</strong>, mi tutor, por su apoyo y el gran curso compartido.</li>
+                            <li>A <strong>Vicente Caro Muñoz</strong>, tutor de 2º ASIR y FCT, por sus consejos expertos.</li>
+                            <li>Al profesorado del ciclo de Informática ASIR, especialmente a <strong>Mario Murias</strong> y <strong>Diego Di Gionantonio</strong>.</li>
+                            <li>A <strong>Darío Sola del Cerro</strong> y <strong>Laura Santamaría Domínguez</strong>, por su cariño y apoyo desde mi llegada al centro.</li>
+                            <li>A <strong>Daniel Espinosa</strong>, por su acogida y respeto.</li>
+                            <li>A mis amigas <strong>Patricia L. Flores</strong>, <strong>Lucía Gaviro</strong> y <strong>Alba García</strong>, por su apoyo incondicional.</li>
+                            <li>A <strong>Nuria Martín</strong>, por su ejemplo de fortaleza y resiliencia.</li>
+                            <li>A mi madre, <strong>Purificación Sáez</strong>, por su apoyo y ánimo constante.</li>
+                            <li>Y, por encima de todo, a mi mujer, <strong>Cristina Quevedo Sierra</strong>, y a mis hijas <strong>Ana y Lía</strong>, por su amor y sacrificio.</li>
+                        </ul>
+                        <p class="slogan">Educación pública de tod@s para tod@s.</p>
                     </div>
                 </div>
             </div>
@@ -1021,11 +1037,9 @@
 
             navMenuLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
-                    // Only prevent default and navigate for internal slide links
                     if (link.dataset.slide) {
                         e.preventDefault();
                         goToSlide(parseInt(link.dataset.slide));
-                         // Close mobile menu if open
                          if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
                             mobileMenu.classList.add('hidden');
                             mobileMenuButton.setAttribute('aria-expanded', 'false');
@@ -1033,7 +1047,6 @@
                             mobileMenuButton.querySelector('.fa-times').classList.add('hidden');
                         }
                     }
-                    // For external links (like Web Principal), the default browser action will occur.
                 });
             });
 
