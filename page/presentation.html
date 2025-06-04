@@ -422,7 +422,7 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start; 
-            max-height: calc(80vh - 10rem); /* Adjusted for mobile title + image */
+            max-height: calc(80vh - 10rem); 
             overflow-y: auto;
             padding-right: 5px; 
         }
@@ -441,7 +441,6 @@
         .text-pane::-webkit-scrollbar-thumb:hover { background: rgba(128, 128, 128, 0.5); }
         html[data-theme='dark'] .text-pane::-webkit-scrollbar-thumb:hover { background: rgba(217, 4, 41, 0.6); }
         
-        /* Navbar mobile adjustments */
         .mobile-nav-menu {
             position: absolute;
             top: 4rem; 
@@ -493,19 +492,22 @@
                     <span class="font-bold text-xl">Héctor Núñez Sáez - TFG</span> 
                 </div>
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-2">
-                        <a href="#" data-slide="0" class="nav-menu-link px-3 py-2 rounded-md text-sm font-medium">Portada</a>
-                        <a href="#" data-slide="1" class="nav-menu-link px-3 py-2 rounded-md text-sm font-medium">Intro</a>
-                        <a href="#" data-slide="2" class="nav-menu-link px-3 py-2 rounded-md text-sm font-medium">Entorno</a>
-                        <a href="#" data-slide="3" class="nav-menu-link px-3 py-2 rounded-md text-sm font-medium">FOG</a>
-                        <a href="#" data-slide="4" class="nav-menu-link px-3 py-2 rounded-md text-sm font-medium">WDS</a>
-                        <a href="#" data-slide="5" class="nav-menu-link px-3 py-2 rounded-md text-sm font-medium">Comp.</a>
-                        <a href="#" data-slide="6" class="nav-menu-link px-3 py-2 rounded-md text-sm font-medium">Concl.</a>
-                        <a href="#" data-slide="7" class="nav-menu-link px-3 py-2 rounded-md text-sm font-medium">Recursos</a>
-                        <a href="#" data-slide="8" class="nav-menu-link px-3 py-2 rounded-md text-sm font-medium">Agrad.</a>
-                        <a href="https://tfghector.pages.dev/" class="nav-menu-link px-3 py-2 rounded-md text-sm font-medium flex items-center">
+                    <div class="ml-10 flex items-baseline space-x-1"> <!-- Reduced space for more items -->
+                        <a href="#" data-slide="0" class="nav-menu-link px-2 py-2 rounded-md text-xs font-medium">Portada</a>
+                        <a href="#" data-slide="1" class="nav-menu-link px-2 py-2 rounded-md text-xs font-medium">Intro</a>
+                        <a href="#" data-slide="2" class="nav-menu-link px-2 py-2 rounded-md text-xs font-medium">Entorno</a>
+                        <a href="#" data-slide="3" class="nav-menu-link px-2 py-2 rounded-md text-xs font-medium">FOG: Inicio</a>
+                        <a href="#" data-slide="4" class="nav-menu-link px-2 py-2 rounded-md text-xs font-medium">FOG: Captura</a>
+                        <a href="#" data-slide="5" class="nav-menu-link px-2 py-2 rounded-md text-xs font-medium">FOG: Despliegue</a>
+                        <a href="#" data-slide="6" class="nav-menu-link px-2 py-2 rounded-md text-xs font-medium">WDS</a>
+                        <a href="#" data-slide="7" class="nav-menu-link px-2 py-2 rounded-md text-xs font-medium">Comparativa</a>
+                        <a href="#" data-slide="8" class="nav-menu-link px-2 py-2 rounded-md text-xs font-medium">Otras Alt.</a>
+                        <a href="#" data-slide="9" class="nav-menu-link px-2 py-2 rounded-md text-xs font-medium">Conclusiones</a>
+                        <a href="#" data-slide="10" class="nav-menu-link px-2 py-2 rounded-md text-xs font-medium">Recursos</a>
+                        <a href="#" data-slide="11" class="nav-menu-link px-2 py-2 rounded-md text-xs font-medium">Agrad.</a>
+                        <a href="https://tfghector.pages.dev/" class="nav-menu-link px-2 py-2 rounded-md text-xs font-medium flex items-center">
                             Web Principal
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1 lucide lucide-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
                         </a>
                     </div>
                 </div>
@@ -524,12 +526,15 @@
                 <a href="#" data-slide="0" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">Portada</a>
                 <a href="#" data-slide="1" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">Intro</a>
                 <a href="#" data-slide="2" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">Entorno</a>
-                <a href="#" data-slide="3" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">FOG</a>
-                <a href="#" data-slide="4" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">WDS</a>
-                <a href="#" data-slide="5" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">Comp.</a>
-                <a href="#" data-slide="6" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">Concl.</a>
-                <a href="#" data-slide="7" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">Recursos</a>
-                <a href="#" data-slide="8" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">Agrad.</a>
+                <a href="#" data-slide="3" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">FOG: Inicio</a>
+                <a href="#" data-slide="4" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">FOG: Captura</a>
+                <a href="#" data-slide="5" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">FOG: Despliegue</a>
+                <a href="#" data-slide="6" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">WDS</a>
+                <a href="#" data-slide="7" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">Comparativa</a>
+                <a href="#" data-slide="8" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">Otras Alt.</a>
+                <a href="#" data-slide="9" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">Conclusiones</a>
+                <a href="#" data-slide="10" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">Recursos</a>
+                <a href="#" data-slide="11" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">Agrad.</a>
                 <a href="https://tfghector.pages.dev/" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">Web Principal</a>
             </div>
         </div>
@@ -538,7 +543,7 @@
     <!-- Slides Container -->
     <div id="slideshow-container" class="relative h-screen w-screen">
 
-        <!-- Slide 1: Portada -->
+        <!-- Slide 1: Portada (index 0) -->
         <section id="portada" class="slide active">
             <div class="slide-content slide-content-single-column"> 
                  <img src="https://github.com/poter69/tfghector/blob/main/images/diapo1.jpg?raw=true" alt="Imagen de Portada - Implantación de Sistemas Operativos" class="slide-image-header mb-6">
@@ -551,7 +556,7 @@
             </div>
         </section>
 
-        <!-- Slide 2: Introducción y Objetivos -->
+        <!-- Slide 2: Introducción y Objetivos (index 1) -->
         <section id="introduccion" class="slide">
             <div class="slide-content">
                 <h2 class="slide-title">1. Introducción y Objetivos</h2>
@@ -589,7 +594,7 @@
             </div>
         </section>
 
-        <!-- Slide 3: Entorno de Trabajo -->
+        <!-- Slide 3: Entorno de Trabajo (index 2) -->
         <section id="entorno" class="slide">
             <div class="slide-content">
                 <h2 class="slide-title">2. Entorno de Laboratorio y Costes</h2>
@@ -625,10 +630,10 @@
             </div>
         </section>
 
-        <!-- Slide 4: FOG Project - Qué es y Puesta en Marcha -->
-        <section id="fog-project-que-es" class="slide">
+        <!-- Slide 4: FOG Project - Qué es y Puesta en Marcha (index 3) -->
+        <section id="fog-project-inicio" class="slide">
             <div class="slide-content">
-                <h2 class="slide-title">3. FOG Project: Solución Open Source</h2>
+                <h2 class="slide-title">3. FOG Project: ¿Qué es y Puesta en Marcha?</h2>
                 <div class="slide-columns-container">
                     <div class="image-pane">
                          <img src="https://github.com/poter69/tfghector/blob/main/images/diapo4.jpg?raw=true" alt="Logo de FOG Project">
@@ -639,7 +644,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg>
                                 ¿Qué es FOG Project?
                             </h3>
-                            <p class="text-sm">Solución libre (GPLv3) para clonación y despliegue de imágenes de SO (Win, Linux, macOS) vía red (PXE, TFTP, NFS). Altamente personalizable y gratuita.</p>
+                            <p class="text-sm">Solución libre (GPLv3) para clonación y despliegue de imágenes de SO (Win, Linux, macOS) vía red (PXE, TFTP, NFS). Altamente personalizable y gratuita. Interfaz web intuitiva.</p>
                         </div>
                         <div class="card fog-accent">
                             <h3 class="text-xl font-semibold text-green-600 mb-2 flex items-center">
@@ -647,46 +652,82 @@
                                 Puesta en Marcha
                             </h3>
                             <ul class="list-disc list-inside text-sm space-y-1">
-                                <li>VM Ubuntu Server 24.04.2 LTS.</li>
-                                <li>Instalación FOG v1.5.10.1650.</li>
-                                <li>Red interna (172.16.0.100) con DHCP propio para PXE.</li>
-                                <li>Gestión vía interfaz web.</li>
+                                <li>VM con Ubuntu Server 24.04.2 LTS.</li>
+                                <li>Instalación de FOG v1.5.10.1650.</li>
+                                <li>Configuración de red interna (172.16.0.100) con DHCP propio para PXE.</li>
+                                <li>Acceso y gestión completa desde interfaz web.</li>
                             </ul>
-                             <p class="mt-2 text-xs">* Anexos II y III.</p>
+                             <p class="mt-2 text-xs">* Detalles en Anexos II y III.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- Slide 5: FOG Project - Proceso Clave y Snapins -->
-        <section id="fog-project-proceso" class="slide">
+        <!-- Slide 5: FOG Project - Preparación y Captura (index 4) -->
+        <section id="fog-project-captura" class="slide">
             <div class="slide-content">
-                <h2 class="slide-title">3.1 FOG: Proceso y Snapins</h2>
+                <h2 class="slide-title">3.1 FOG: Preparación y Captura de Imagen Maestra</h2>
                 <div class="slide-columns-container md:flex-row-reverse"> 
                      <div class="image-pane">
-                        <img src="https://github.com/poter69/tfghector/blob/main/images/diapo5.jpg?raw=true" alt="Flujo de Trabajo FOG">
+                        <img src="https://github.com/poter69/tfghector/blob/main/images/diapo2-1.png?raw=true" alt="Preparación de Imagen Maestra con FOG">
                     </div>
                     <div class="text-pane">
                         <div class="card mb-4">
-                            <h3 class="text-lg font-semibold text-red-500 mb-2">Proceso Clave</h3> 
-                            <ol class="list-decimal list-inside text-sm space-y-1">
-                                <li><strong>Preparar Imagen Maestra:</strong> SO base + software. Sysprep (Win) / Script limpieza (Linux). Instalar FOG Client.</li>
-                                <li><strong>Capturar Imagen:</strong> Registrar maestro en FOG, crear tarea de captura, arrancar por PXE.</li>
-                                <li><strong>Desplegar Imagen:</strong> Registrar cliente, asignar imagen, crear tarea de despliegue, arrancar por PXE.</li>
-                            </ol>
-                            <p class="mt-2 text-xs">* Memoria Cap. 10, Anexo VIII.</p>
+                            <h3 class="text-lg font-semibold text-red-500 mb-2">1. Preparar Equipo Maestro</h3> 
+                            <ul class="list-disc list-inside text-sm space-y-1">
+                                <li>Instalar SO (Windows 10 / Ubuntu) y software base.</li>
+                                <li>Instalar FOG Client: permite gestión post-despliegue (Snapins, renombrado, etc.).</li>
+                                <li>Para Windows: Ejecutar Sysprep con `unattend.xml` para generalizar y automatizar OOBE.</li>
+                                <li>Para Linux: Ejecutar script de limpieza (eliminar IDs únicos, logs, etc.).</li>
+                            </ul>
+                        </div>
+                        <div class="card fog-accent">
+                            <h3 class="text-lg font-semibold text-green-600 mb-2">2. Capturar Imagen con FOG</h3>
+                             <ul class="list-disc list-inside text-sm space-y-1">
+                                <li>Registrar el equipo maestro en la interfaz web de FOG.</li>
+                                <li>Crear una definición de imagen (nombre, SO, tipo de disco).</li>
+                                <li>Asignar la definición de imagen al host maestro.</li>
+                                <li>Crear una tarea de "Captura" para el host.</li>
+                                <li>Arrancar el equipo maestro por PXE. FOG automáticamente clonará el disco (usando Partclone) y guardará la imagen en el servidor.</li>
+                            </ul>
+                            <p class="mt-2 text-xs">* Detalles en Memoria Cap. 10 y Anexo VIII.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 6: FOG Project - Despliegue y Snapins (index 5) -->
+        <section id="fog-project-despliegue" class="slide">
+            <div class="slide-content">
+                <h2 class="slide-title">3.2 FOG: Despliegue de Imagen y Snapins</h2>
+                <div class="slide-columns-container">
+                     <div class="image-pane">
+                        <img src="https://github.com/poter69/tfghector/blob/main/images/diapo5.jpg?raw=true" alt="Despliegue y Snapins con FOG">
+                    </div>
+                    <div class="text-pane">
+                        <div class="card mb-4">
+                            <h3 class="text-lg font-semibold text-red-500 mb-2">3. Desplegar Imagen en Clientes</h3> 
+                            <ul class="list-disc list-inside text-sm space-y-1">
+                                <li>Registrar nuevo equipo cliente en FOG (manual o auto-registro).</li>
+                                <li>Asignar la imagen maestra capturada al nuevo cliente.</li>
+                                <li>Crear una tarea de "Despliegue" para el cliente.</li>
+                                <li>Arrancar el cliente por PXE. FOG restaurará la imagen en el disco del cliente.</li>
+                                <li>El sistema arrancará configurado (gracias a Sysprep/script limpieza).</li>
+                            </ul>
                         </div>
                         <div class="card fog-accent">
                             <h3 class="text-lg font-semibold text-green-600 mb-2 flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M19.439 7.852c-2.536 1.268-4.005 4.005-4.005 6.904 0 1.21.32 2.354.88 3.338"/><path d="M18.112 20.088c.568.88.88 1.833.88 2.912 0 2.899-1.469 5.635-4.005 6.904A4.96 4.96 0 0 1 14 30.566c-1.21 0-2.354-.32-3.338-.88"/><path d="M4.561 16.148c2.536-1.268 4.005-4.005 4.005-6.904 0-1.21-.32-2.354-.88-3.338"/><path d="M5.888 3.912c-.568-.88-.88-1.833-.88-2.912 0-2.899 1.469-5.635 4.005-6.904A4.96 4.96 0 0 1 10-6.434c1.21 0 2.354.32 3.338.88"/><path d="M18.112 3.912c.94-.095 1.92-.095 2.888 0 .568.88.88 1.833.88 2.912 0 2.899-1.469 5.635-4.005 6.904A4.96 4.96 0 0 1 14 14.334c-1.21 0-2.354-.32-3.338-.88"/><path d="M5.888 20.088c-.94.095-1.92.095-2.888 0-.568-.88-.88-1.833-.88-2.912 0-2.899 1.469-5.635 4.005-6.904A4.96 4.96 0 0 1 10 9.666c1.21 0 2.354.32 3.338.88"/></svg>
-                                Snapins: Automatización Avanzada
+                                Snapins: Automatización Total
                             </h3>
-                            <p class="text-xs mb-1">Scripts/ejecutables para tareas post-instalación.</p>
+                            <p class="text-xs mb-1">Scripts o ejecutables para tareas post-instalación automáticas:</p>
                             <ul class="list-disc list-inside text-xs space-y-0.5">
-                                <li>Instalación Office 365.</li>
-                                <li>Cambio de nombre de equipo.</li>
-                                <li>Creación/segurización de usuarios.</li>
+                                <li>Instalación silenciosa de Office 365.</li>
+                                <li>Cambio automático de nombre de equipo.</li>
+                                <li>Creación y segurización de usuarios locales.</li>
+                                <li>Configuraciones específicas del sistema.</li>
                             </ul>
                              <p class="mt-2 text-xs">* Anexos VII y VIII.</p>
                         </div>
@@ -695,7 +736,7 @@
             </div>
         </section>
 
-        <!-- Slide 6: WDS -->
+        <!-- Slide 7: WDS (index 6) -->
         <section id="wds" class="slide">
             <div class="slide-content">
                 <h2 class="slide-title">4. Windows Deployment Services (WDS)</h2>
@@ -714,22 +755,23 @@
                         <div class="card wds-accent">
                             <h3 class="text-xl font-semibold text-red-600 mb-2 flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
-                                Experiencia y Limitaciones
+                                Configuración y Problemática
                             </h3>
                             <ul class="list-disc list-inside text-sm space-y-1">
-                                <li><strong>Incompatibilidad:</strong> Problemas con `boot.wim` modernos en Win Server 2025.</li>
-                                <li><strong>Obsolescencia:</strong> Microsoft lo descontinúa por Intune.</li>
-                                <li><strong>Menor flexibilidad:</strong> Automatización post-despliegue limitada.</li>
-                                <li>Proceso más manual y rígido.</li>
+                                <li>Instalación en Windows Server 2025 (roles DHCP, DNS, WDS).</li>
+                                <li>Modo independiente (sin AD).</li>
+                                <li><strong>Incompatibilidad Crítica:</strong> WDS en Server 2025 no admite `boot.wim` modernos. Obligó a usar `boot.wim` de Win 8.1, limitando la automatización (`unattend.xml` no se aplicó).</li>
+                                <li><strong>Obsolescencia:</strong> Microsoft lo descontinúa en favor de Intune (solución cloud de pago).</li>
+                                <li>Proceso general más manual y menos flexible que FOG.</li>
                             </ul>
-                            <p class="mt-2 text-xs">* Anexos IV, V, IX.</p>
+                            <p class="mt-2 text-xs">* Detalles en Anexos IV, V, IX.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Slide 7: Comparativa -->
+        <!-- Slide 8: Comparativa (index 7) -->
         <section id="comparativa" class="slide">
             <div class="slide-content">
                 <h2 class="slide-title">5. FOG vs. WDS: Veredicto y Costes</h2>
@@ -783,11 +825,41 @@
                 </div>
             </div>
         </section>
+        
+        <!-- Slide 9: Otras Alternativas (index 8) -->
+        <section id="otras-alternativas" class="slide">
+            <div class="slide-content">
+                <h2 class="slide-title">6. Otras Alternativas Consideradas</h2>
+                <div class="slide-columns-container">
+                    <div class="image-pane">
+                        <img src="https://github.com/poter69/tfghector/blob/main/images/diapo2-4.png?raw=true" alt="Otras herramientas de despliegue">
+                    </div>
+                    <div class="text-pane">
+                        <div class="card mb-4">
+                            <h3 class="text-xl font-semibold text-red-500 mb-2 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                                Clonezilla
+                            </h3>
+                            <p class="text-sm">Herramienta veterana para clonar discos/particiones. Funciona en modo live (USB/CD/PXE). Ideal para tareas puntuales o entornos pequeños. Carece de gestión centralizada o automatización avanzada como FOG.</p>
+                        </div>
+                        <div class="card">
+                            <h3 class="text-xl font-semibold text-red-500 mb-2 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25" /><path d="M8 16h.01" /></svg>
+                                DRBL (Diskless Remote Boot in Linux)
+                            </h3>
+                            <p class="text-sm">Solución más compleja para arranque de sistemas sin disco desde un servidor central. Configuración exigente, requiere dominio avanzado de Linux y redes. Más adecuado para laboratorios con arranque centralizado que para despliegues personalizados.</p>
+                        </div>
+                        <p class="mt-4 text-sm">Ambas son válidas en contextos específicos, pero FOG Project se ajustó mejor a los objetivos de automatización, personalización y gestión centralizada de este TFG.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <!-- Slide 8: Conclusiones -->
+
+        <!-- Slide 10: Conclusiones (index 9) -->
         <section id="conclusiones" class="slide">
             <div class="slide-content">
-                <h2 class="slide-title">6. Conclusiones y Futuro</h2>
+                <h2 class="slide-title">7. Conclusiones y Líneas Futuras</h2>
                 <div class="slide-columns-container">
                     <div class="image-pane">
                         <img src="https://github.com/poter69/tfghector/blob/main/images/diapo8.jpg?raw=true" alt="Conclusiones del Proyecto">
@@ -796,25 +868,27 @@
                         <div class="card fog-accent mb-4">
                             <h3 class="text-xl font-semibold text-green-600 mb-2 flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                                FOG Project: Superior
+                                FOG Project: Solución Superior
                             </h3>
-                            <p class="text-sm">Recomendado por flexibilidad, multiplataforma, Snapins, sin coste y comunidad activa. Flujo completo y eficiente demostrado.</p>
+                            <p class="text-sm">Recomendado por su flexibilidad, soporte multiplataforma, potente sistema de Snapins para automatización post-despliegue, ausencia de costes de licencia y una comunidad activa. Se demostró un flujo de trabajo completo y eficiente para Windows y Linux.</p>
                         </div>
                         <div class="card wds-accent mb-4">
                             <h3 class="text-xl font-semibold text-red-600 mb-2 flex items-center">
                                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><circle cx="12" cy="12" r="10"/><line x1="15" x2="9" y1="9" y2="15"/><line x1="9" x2="15" y1="9" y2="15"/></svg>
-                                WDS: Limitado
+                                WDS: Limitaciones y Obsolescencia
                             </h3>
-                            <p class="text-sm">Incompatibilidades en Win Server 2025 y obsolescencia. Uso futuro desaconsejable para nuevos proyectos.</p>
+                            <p class="text-sm">Presenta incompatibilidades críticas con `boot.wim` modernos en Windows Server 2025. Microsoft lo está descontinuando en favor de soluciones cloud como Intune. Su uso futuro es desaconsejable para nuevos proyectos que busquen flexibilidad y modernidad.</p>
                         </div>
                         <div class="card">
                              <h3 class="text-xl font-semibold text-red-500 mb-2 flex items-center"> 
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3.33 1.67 6.67 1.67 10 0v-5"/></svg>
-                                Aprendizaje y Líneas Futuras (FOG)
+                                Aprendizaje y Futuras Líneas (FOG)
                             </h3>
                             <ul class="list-disc list-inside text-sm space-y-1">
-                                <li>Compatibilidad Secure Boot, integración AD, despliegue multinodo, VPN.</li>
-                                <li>Mejora de gestión de Snapins y documentación.</li>
+                                <li>Investigar compatibilidad con Secure Boot.</li>
+                                <li>Profundizar en integración con Active Directory.</li>
+                                <li>Explorar despliegue multinodo y sobre VPN.</li>
+                                <li>Mejorar la gestión y documentación de Snapins.</li>
                             </ul>
                         </div>
                     </div>
@@ -822,13 +896,13 @@
             </div>
         </section>
         
-        <!-- Slide 9: Recursos Adicionales -->
+        <!-- Slide 11: Recursos Adicionales (index 10) -->
         <section id="recursos" class="slide">
             <div class="slide-content">
-                <h2 class="slide-title">7. Recursos Adicionales</h2>
+                <h2 class="slide-title">8. Recursos Adicionales</h2>
                  <div class="slide-columns-container md:flex-row-reverse"> 
                      <div class="image-pane">
-                        <img src="https://github.com/poter69/tfghector/blob/main/images/diapo8.jpg?raw=true" alt="Recursos Adicionales"> 
+                        <img src="https://github.com/poter69/tfghector/blob/main/images/diapo2-7.png?raw=true" alt="Recursos Adicionales"> 
                     </div>
                     <div class="text-pane">
                         <p class="mb-4">Para complementar esta presentación, he creado algunos recursos visuales y una web con más detalles del proyecto:</p>
@@ -871,13 +945,13 @@
             </div>
         </section>
 
-        <!-- Slide 10: Agradecimientos -->
+        <!-- Slide 12: Agradecimientos (index 11) -->
         <section id="agradecimientos" class="slide">
             <div class="slide-content">
-                <h2 class="slide-title">8. Agradecimientos</h2>
+                <h2 class="slide-title">9. Agradecimientos</h2>
                 <div class="slide-columns-container">
                     <div class="image-pane">
-                        <img src="https://github.com/poter69/tfghector/blob/main/images/diapo1.jpg?raw=true" alt="Agradecimientos">
+                        <img src="https://github.com/poter69/tfghector/blob/main/images/diapo2-9.png?raw=true" alt="Agradecimientos">
                     </div>
                     <div class="text-pane acknowledgements-text">
                         <ul class="acknowledgements-list text-sm">
@@ -939,7 +1013,7 @@
 
             function applyTheme(theme) {
                 document.documentElement.setAttribute('data-theme', theme);
-                localStorage.setItem('tfg-theme', theme); // Save user preference
+                localStorage.setItem('tfg-theme', theme); 
                 if (theme === 'light') {
                     themeIcon.classList.remove('fa-moon');
                     themeIcon.classList.add('fa-sun');
@@ -955,14 +1029,12 @@
                 applyTheme(newTheme);
             });
 
-            // Initialize theme: 1. localStorage, 2. OS preference
             const savedTheme = localStorage.getItem('tfg-theme');
             if (savedTheme) {
                 applyTheme(savedTheme);
             } else {
                 applyTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
             }
-            // Listen for OS theme changes ONLY if no user preference is set
              window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
                 if (!localStorage.getItem('tfg-theme')) { 
                     applyTheme(e.matches ? 'dark' : 'light');
