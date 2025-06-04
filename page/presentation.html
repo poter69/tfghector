@@ -455,6 +455,13 @@
             gap: 0.5rem;
             z-index: 19; /* Below navbar, above slides */
         }
+        .acknowledgements-text p {
+            margin-bottom: 0.75rem; /* 12px */
+            line-height: 1.6;
+        }
+        .acknowledgements-text strong {
+            color: var(--neon-red);
+        }
 
 
     </style>
@@ -481,6 +488,7 @@
                         <a href="#" data-slide="5" class="nav-menu-link px-3 py-2 rounded-md text-sm font-medium">Comp.</a>
                         <a href="#" data-slide="6" class="nav-menu-link px-3 py-2 rounded-md text-sm font-medium">Concl.</a>
                         <a href="#" data-slide="7" class="nav-menu-link px-3 py-2 rounded-md text-sm font-medium">Recursos</a>
+                        <a href="#" data-slide="8" class="nav-menu-link px-3 py-2 rounded-md text-sm font-medium">Agrad.</a>
                         <a href="https://tfghector.pages.dev/" class="nav-menu-link px-3 py-2 rounded-md text-sm font-medium flex items-center">
                             Web Principal
                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1 lucide lucide-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
@@ -507,6 +515,7 @@
                 <a href="#" data-slide="5" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">Comp.</a>
                 <a href="#" data-slide="6" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">Concl.</a>
                 <a href="#" data-slide="7" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">Recursos</a>
+                <a href="#" data-slide="8" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">Agrad.</a>
                 <a href="https://tfghector.pages.dev/" class="nav-menu-link block px-3 py-2 rounded-md text-base font-medium">Web Principal</a>
             </div>
         </div>
@@ -843,13 +852,35 @@
                                 </a>
                             </div>
                         </div>
-                         <div class="mt-6 text-center">
-                            <p class="text-2xl font-bold" style="color: var(--neon-red);">¡Gracias por su atención!</p>
-                        </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Slide 10: Agradecimientos -->
+        <section id="agradecimientos" class="slide">
+            <div class="slide-content">
+                <h2 class="slide-title">8. Agradecimientos</h2>
+                <div class="slide-columns-container">
+                    <div class="image-pane">
+                        <img src="https://github.com/poter69/tfghector/blob/main/images/diapo1.jpg?raw=true" alt="Agradecimientos">
+                    </div>
+                    <div class="text-pane acknowledgements-text">
+                        <p>Quiero empezar agradeciendo a <strong>Francisco Mesa Fernández</strong>, tutor de este Trabajo de Fin de Grado, por su apoyo en cada fase del proyecto y, sobre todo, por el apasionante curso que hemos compartido.</p>
+                        <p>Del mismo modo, doy las gracias a <strong>Vicente Caro Muñoz</strong>, tutor de 2º ASIR A y de mis prácticas FCT, por sus consejos expertos y su dedicación constante, que han sido fundamentales para el desarrollo de mi titulación como Técnico Superior.</p>
+                        <p>Extiendo mi gratitud al resto del profesorado del ciclo de Informática ASIR, tanto a quienes compartí clases como a quienes no, especialmente a <strong>Mario Murias</strong> y <strong>Diego Di Gionantonio</strong>, por nuestra relación anterior a ser alumno del centro.</p>
+                        <p>Mi reconocimiento más cercano y afectuoso va para <strong>Darío Sola del Cerro</strong> y <strong>Laura Santamaría Domínguez</strong>. No solo me facilitaron la llegada cuando más oscuro pintaba todo, sino que se convirtieron en compañeros de café en muchos recreos. Siempre agradeceré el cariño con el que me habéis tratado y la ilusión que os supuso mi llegada al centro; os admiro muchísimo a ambos. Bien sabéis que vuestra cercanía hizo del centro un lugar acogedor y ameno durante mi etapa como técnico informático en ORBYS.</p>
+                        <p>Quiero también agradecer a <strong>Daniel Espinosa</strong>, por acogerme tan bien cuando llegué a mitad de módulo y esos dos días de incredulidad en Toshiba, me llevo de ti el siempre profundo respeto y trato qué me has hecho llegar durante todo el curso.</p>
+                        <p>A mis amigas <strong>Patricia L. Flores</strong>, <strong>Lucía Gaviro</strong> y <strong>Alba García</strong>, gracias por ser ese apoyo incondicional y por llenar de alegría los momentos más intensos de este proceso académico.</p>
+                        <p>Un reconocimiento muy especial para <strong>Nuria Martín</strong>, cuyo ejemplo de fortaleza y ánimo en un periodo especialmente difícil me ha enseñado el verdadero valor de la resiliencia y la esperanza.</p>
+                        <p>También quiero expresar mi gratitud a mi madre, <strong>Purificación Sáez</strong>, por su apoyo incondicional y su ánimo para retomar mis estudios, así como por ser siempre mi sostén en tantas facetas de la vida.</p>
+                        <p>Y, por encima de todo, a mi mujer, <strong>Cristina Quevedo Sierra</strong>: gracias por cuidar con tanto amor de <strong>Ana y Lía</strong> cuando yo no podía estar, por sostenerme en las horas de más presión y por ser mi guía y refugio cada día. Sin vuestro cariño y sacrificio, este logro no habría sido posible.</p>
+                        <p class="mt-6 text-center text-2xl font-bold" style="color: var(--neon-red);">¡Gracias por su atención!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
     </div>
 
@@ -892,7 +923,7 @@
 
             function applyTheme(theme) {
                 document.documentElement.setAttribute('data-theme', theme);
-                localStorage.setItem('tfg-theme', theme);
+                localStorage.setItem('tfg-theme', theme); // Save user preference
                 if (theme === 'light') {
                     themeIcon.classList.remove('fa-moon');
                     themeIcon.classList.add('fa-sun');
@@ -903,20 +934,20 @@
             }
 
             themeToggle.addEventListener('click', () => {
-                const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+                const currentTheme = document.documentElement.getAttribute('data-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
                 const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
                 applyTheme(newTheme);
             });
 
+            // Initialize theme: 1. localStorage, 2. OS preference
             const savedTheme = localStorage.getItem('tfg-theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
             if (savedTheme) {
                 applyTheme(savedTheme);
             } else {
-                applyTheme(prefersDark ? 'dark' : 'light');
+                applyTheme(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
             }
+            // Listen for OS theme changes ONLY if no user preference is set
              window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-                // Only change if no manual preference is set by the user
                 if (!localStorage.getItem('tfg-theme')) { 
                     applyTheme(e.matches ? 'dark' : 'light');
                 }
@@ -990,15 +1021,19 @@
 
             navMenuLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
+                    // Only prevent default and navigate for internal slide links
                     if (link.dataset.slide) {
                         e.preventDefault();
-                        goToSlide(parseInt(e.target.dataset.slide));
+                        goToSlide(parseInt(link.dataset.slide));
+                         // Close mobile menu if open
                          if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
                             mobileMenu.classList.add('hidden');
                             mobileMenuButton.setAttribute('aria-expanded', 'false');
-                            mobileMenuButton.querySelectorAll('i').forEach(icon => icon.classList.toggle('hidden'));
+                            mobileMenuButton.querySelector('.fa-bars').classList.remove('hidden');
+                            mobileMenuButton.querySelector('.fa-times').classList.add('hidden');
                         }
                     }
+                    // For external links (like Web Principal), the default browser action will occur.
                 });
             });
 
