@@ -1,4 +1,7 @@
-const slides = document.querySelectorAll('.slide');
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
             const prevButton = document.getElementById('prev-slide');
             const nextButton = document.getElementById('next-slide');
             const dotsContainer = document.getElementById('dots-container');
@@ -153,3 +156,4 @@ const slides = document.querySelectorAll('.slide');
             
             updateSlides(); 
         });
+    </script>
