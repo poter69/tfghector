@@ -1,0 +1,523 @@
+diff --git a//dev/null b/index.css
+index 0000000000000000000000000000000000000000..d75ce316a81e13c0995362e4a1124abf4bfb3d12 100644
+--- a//dev/null
++++ b/index.css
+@@ -0,0 +1,518 @@
++	  /* Submenú de detalles: oculta el menú principal y muestra solo el bloque de detalles */
++
++/* 1. Oculta todos los enlaces cuando estamos en modo submenu */
++nav.sidebar.submenu > a {
++  display: none;
++}
++
++/* 2. Ajusta el contenedor .details para ocupar todo el espacio disponible */
++nav.sidebar.submenu .details {
++  flex: 1 1 auto;
++  padding: 2rem 1.5rem;
++}
++
++/* 3. Estilo para el botón de cerrar dentro del submenu */
++nav.sidebar.submenu .close-btn {
++  display: inline-block;
++  margin-bottom: 0;
++  background: none;
++  border: 1px solid var(--neon);
++  color: var(--neon);
++  padding: 0.5rem 1rem;
++  border-radius: 5px;
++  cursor: pointer;
++}
++    :root {
++  --neon: #D90429;
++  --bg: #0a0a0a;
++  --glass: rgba(255,255,255,0.05);
++}
++*, *::before, *::after {
++  margin: 0; padding: 0; box-sizing: border-box;
++}
++body {
++  font-family: 'Poppins', sans-serif;
++  background: var(--bg);
++  color: #fff;
++  overflow-x: hidden;
++}
++.separator {
++  border: 0;
++  height: 2px;
++  background-color: #D90429;
++  margin: 0.5rem 0 1.5rem;
++  width: 100%;
++}
++
++.container h3 a:hover {
++  text-decoration: underline;
++}
++/* Sidebar */
++.hamburger {
++  position: fixed; top: 1.5rem; right: 1.5rem;
++  z-index: 1100; background: none; border: none;
++  color: var(--neon); font-size: 2rem; cursor: pointer;
++  filter: drop-shadow(0 0 5px var(--neon));
++  transition: transform 0.3s;
++}
++.hamburger:hover { transform: scale(1.1); }
++
++nav.sidebar {
++  position: fixed; top: 0; right: -300px;
++  width: 300px; height: 100vh;
++  background: rgba(10,10,10,0.98);
++  backdrop-filter: blur(15px);
++  padding: 2rem 1.5rem;
++  display: flex; flex-direction: column; gap: 2rem;
++  transition: right 0.4s ease;
++  z-index: 1000; border-left: 2px solid var(--neon);
++  box-shadow: -10px 0 30px rgba(217,4,41,0.3);
++  overflow-y: auto;
++  right: -300px;           /* oculto 300px a la derecha */
++  transition: right 0.4s ease;
++}
++nav.sidebar.open {
++  right: 0;                /* al añadir .open aparece */
++}
++nav.sidebar a {
++  color: #bbb; text-decoration: none;
++  font-size: 1.2rem; padding: 0.8rem;
++  border-radius: 8px; overflow: hidden;
++  position: relative; transition: all 0.3s;
++}
++nav.sidebar a:hover, nav.sidebar a.active {
++  color: #fff; transform: translateX(-10px);
++}
++nav.sidebar a::before {
++  content: '';
++  position: absolute; top: 0; left: -100%;
++  width: 100%; height: 100%;
++  background: linear-gradient(90deg, transparent, rgba(217,4,41,0.2), transparent);
++  transition: 0.4s;
++}
++nav.sidebar a:hover::before { left: 100%; }
++
++/* Submenú */
++nav.sidebar.submenu > a { display: none; }
++nav.sidebar .details { display: none; }
++nav.sidebar.submenu .details {
++  display: block;
++  flex: 1 1 auto;
++  padding: 2rem 1.5rem;
++}
++nav.sidebar.submenu .close-btn {
++  display: inline-block;
++  margin-bottom: 1rem;
++  background: none;
++  border: 1px solid var(--neon);
++  color: var(--neon);
++  padding: 0.5rem 1rem;
++  border-radius: 5px;
++  cursor: pointer;
++}
++.details {
++  margin-top: auto;
++  padding-top: 1rem;
++  border-top: 1px solid rgba(217,4,41,0.3);
++}
++.details h4 {
++  font-size: 1.5rem; color: var(--neon);
++  margin-bottom: 1rem;
++}
++.details p {
++  font-size: 1rem; margin: 0.5rem 0;
++}
++.details .btn {
++  display: block; margin-top: 1rem;
++  text-align: center; font-size: 1rem;
++  padding: 0.8rem; width: 100%;
++}
++
++/* Time info */
++.time-info {
++  color: #fff !important; /* 👈 Esto se impone siempre */
++  background: rgba(217,4,41,0.1);
++  border: 1px solid var(--neon);
++  border-radius: 10px;
++  padding: 1rem;
++  margin: 1.5rem auto 0;
++  max-width: 400px;
++  text-align: center;
++}
++
++/* Header con parallax */
++header {
++  position: relative; height: 75vh; overflow: hidden;
++  display: flex; align-items: center; justify-content: center; text-align: center;
++}
++header + * {
++  margin-top: 0 !important;
++  padding-top: 0 !important;
++}
++section:first-of-type {
++  margin-top: 0 !important;
++  padding-top: 0 !important;
++}
++.parallax-bg {
++  position: absolute; top: 0; left: 0; width: 100%; height: 70%;
++  background: url('https://i.postimg.cc/Jh9FFCsW/WEB.png') center/cover;
++  filter: saturate(0.8) brightness(0.4) contrast(1.2);
++  transform: translateZ(-1px) scale(1.2);
++  opacity: 0.8; will-change: transform;
++}
++.header-content {
++  position: relative; z-index: 1;
++  background-color: rgba(0, 0, 0, 0.2); /* Fondo semitransparente */
++  padding: 1em;
++  text-align: center;
++  border-radius: 10px;
++}
++.header-content h1 {
++  font-size: 4rem; color: var(--neon);
++  text-shadow: 0 0 20px rgba(217,4,41,0.6);
++}
++.header-content h2 {
++  font-size: 1.5rem; color: #ddd; font-weight: 300;
++  margin-top: 0.5rem;
++}
++
++/* Main content */
++.container { padding: 2rem; max-width: 1200px; margin: 0 auto; }
++section { margin: 2rem 0; }
++h3 {
++  font-size: 2.5rem; color: var(--neon);
++  margin-bottom: 3rem; text-align: center;
++}
++
++/* Progress */
++#progress { text-align: center; }
++.circle {
++  position: relative; width: 200px; height: 200px;
++  border-radius: 50%;
++  background: conic-gradient(var(--neon) 0% 100%, #333 100% 100%);
++  margin: 0 auto; box-shadow: 0 0 30px rgba(217,4,41,0.6);
++  animation: glow 2s infinite alternate;
++}
++.circle span {
++  position: absolute; top: 50%; left: 50%;
++  transform: translate(-50%, -50%);
++  font-size: 3rem; font-weight: 600;
++}
++@keyframes glow {
++  from { box-shadow: 0 0 10px var(--neon); }
++  to { box-shadow: 0 0 40px var(--neon); }
++}
++
++/* Videos */
++.videos {
++  display: grid; grid-template-columns: 1fr; gap: 3rem;
++  max-width: 1000px; margin: 0 auto;
++  align-items: center; /* centra el botón debajo del iframe */
++}
++.video-card {
++  display: flex;
++  flex-direction: column;
++  align-items: center; /* centra el botón debajo del iframe */
++  border-radius: 15px;
++  overflow: hidden;
++  box-shadow: 0 0 30px rgba(217,4,41,0.3);
++  transition: transform 0.3s;
++  padding-bottom: 1.5rem; /* 👈 añade esto */
++}
++.video-card:hover { transform: scale(1.02); }
++.video-card iframe { width: 100%; height: 500px; border: none; }
++.video-card .btn {
++  margin-top: 1rem;
++  align-self: center; /* se asegura de que esté centrado */
++}
++
++/* Botón */
++.btn {
++  display: inline-block; padding: 1rem 2rem;
++  background: var(--neon); color: #fff; border-radius: 50px;
++  text-decoration: none; transition: all 0.3s;
++  white-space: nowrap;
++}
++.btn:hover {
++  transform: translateY(-3px);
++  box-shadow: 0 5px 15px rgba(217,4,41,0.4);
++}
++
++/* Documents */
++.downloads-grid {
++  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
++  gap: 2rem; margin-top: 3rem;
++}
++.doc-block {
++  background: var(--glass); padding: 2rem; border-radius: 15px;
++  border: 1px solid rgba(217,4,41,0.3);
++  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
++}
++.doc-block:hover {
++  transform: translateY(-5px);
++  box-shadow: 0 10px 20px rgba(217,4,41,0.3);
++  border-color: var(--neon);
++}
++.doc-block.featured {
++  grid-column: 1 / -1;
++  background: linear-gradient(45deg, rgba(217,4,41,0.1), var(--glass));
++  border: 2px solid var(--neon);
++}
++.doc-block h4 {
++  color: var(--neon); margin-bottom: 1rem; font-size: 1.3rem;
++}
++.doc-block button {
++  width: 100%; padding: 1rem; background: var(--neon);
++  border: none; border-radius: 50px; color: #fff; cursor: pointer;
++  transition: transform 0.3s; min-width: 120px;
++}
++.doc-block button:hover { transform: scale(1.05); }
++
++/* Extras */
++.snapin-list {
++  display: flex; flex-direction: column; gap: 1rem;
++}
++.snapin-list a {
++  display: flex; align-items: center; gap: 1rem;
++  padding: 1rem; background: var(--glass); border-radius: 10px;
++  color: #fff; text-decoration: none;
++  transition: background 0.3s, transform 0.3s;
++  font-size: 0.85rem;
++  word-break: break-word;
++}
++.snapin-list a:hover {
++  background: rgba(217,4,41,0.1); transform: translateX(10px);
++}
++
++/* Particles */
++#particles {
++  position: fixed; top:0; left:0; width:100%; height:100%;
++  z-index: -1; pointer-events: none;
++}
++
++/* Responsive */
++@media (max-width:768px) {
++  .videos { grid-template-columns: 1fr; }
++  .video-card iframe { height: 250px; }
++  .header-content h1 { font-size: 2.5rem; }
++  h3 { font-size: 2rem; }
++
++  /* Sidebar full-width y abierto en móvil */
++  nav.sidebar {
++    width: 100%;
++    right: -100%;          /* oculto completamente */
++    padding: 1.5rem 1rem;
++  }
++  header {
++    /* Mantén tu height:75vh; */
++    /* Solo cambiamos el align y el padding para no romper el fondo */
++    display: flex;
++    flex-direction: column;
++    justify-content: flex-start; /* sube todo al principio */
++    padding-top: 2rem;           /* ajusta este valor al gusto */
++  }
++	  .header-content {
++    margin-top: 1rem; /* espacio extra entre iconos y título */
++  }
++  }
++ .time-info {
++    max-width: 90%;
++    margin: 1rem auto;
++    padding: 1rem;
++  }
++
++  /* Ajustes tipográficos en detalles */
++  .details h4 { font-size: 1.5rem; }
++  .details p  { font-size: 1rem; }
++
++  /* Botón de documento más pequeño */
++  .doc-block button {
++    font-size: 0.9rem;
++    padding: 0.8rem;
++  }
++
++  /* Hamburguesa más pequeña */
++  .hamburger {
++    top: 1rem;
++    right: 1rem;
++    font-size: 1.5rem;
++  }
++}
++
++canvas#particles {
++    background: none !important;
++    z-index: -1 !important;
++    pointer-events: none;
++  }
++/* 🌞 Modo claro */
++:root[data-theme='light'] {
++    --bg: #ffffff;
++    --neon: #007bff;
++    --glass: rgba(0, 0, 0, 0.05);
++  }
++
++  body {
++    color: #111;
++    background: var(--bg);
++  }
++
++  nav.sidebar {
++    background: rgba(255,255,255,0.95);
++    border-left: 2px solid var(--neon);
++    box-shadow: -10px 0 30px rgba(0,123,255,0.2);
++  }
++
++  nav.sidebar a {
++    color: #333;
++  }
++
++  nav.sidebar a:hover,
++  nav.sidebar a.active {
++    color: #000;
++  }
++
++  .doc-block {
++    border: 1px solid rgba(0,123,255,0.3);
++  }
++
++  .doc-block:hover {
++    border-color: var(--neon);
++    box-shadow: 0 10px 20px rgba(0,123,255,0.3);
++  }
++
++  .doc-block.featured {
++    border: 2px solid var(--neon);
++    background: linear-gradient(45deg, rgba(0,123,255,0.1), var(--glass));
++  }
++
++  .circle {
++    background: conic-gradient(var(--neon) 0% 100%, #ccc 100% 100%);
++    box-shadow: 0 0 30px rgba(0,123,255,0.4);
++  }
++
++  .circle span {
++    color: #000;
++  }
++
++  .btn {
++    background: var(--neon);
++    color: #fff;
++  }
++
++  .snapin-list a {
++    background: rgba(0, 0, 0, 0.05);
++    color: #111;
++  }
++
++  .snapin-list a:hover {
++    background: rgba(0,123,255,0.1);
++  }
++	  
++.downloads-subgrid {
++  display: flex;
++  justify-content: center;
++  gap: 2rem;
++  flex-wrap: wrap;
++}
++
++/* 🌗 Botón cambio de tema */
++#themeToggle {
++  position: fixed;
++  top: 1.2rem;
++  left: 1.2rem;
++  z-index: 2000;
++  background: none;
++  border: none;
++  color: var(--neon);
++  font-size: 1.6rem;
++  cursor: pointer;
++  transition: transform 0.3s ease, color 0.3s ease, filter 0.3s ease;
++  filter: drop-shadow(0 0 4px var(--neon));
++}
++
++#agradecimientos .doc-block p {
++  max-width: 850px;
++  margin: 0 auto 1.5rem auto;
++  text-align: justify;
++  line-height: 1.8;
++  -webkit-hyphens: auto; /* Para navegadores WebKit como Safari */
++  -moz-hyphens: auto;    /* Para Firefox (aunque 'hyphens: auto' debería bastar) */
++  -ms-hyphens: auto;     /* Para Internet Explorer / Edge más antiguos */
++  hyphens: auto;         /* Estándar */
++  word-break: break-word; /* Como una medida adicional si la hifenación no es suficiente o para palabras extremadamente largas sin puntos de hifenación obvios */
++}
++
++#curiosidades .downloads-grid.paired {
++  display: flex;
++  justify-content: center;
++  gap: 2rem;
++  flex-wrap: wrap;
++  margin-top: 2rem;
++}
++
++.theme-label {
++  font-size: 0.8rem;
++}
++
++@media (max-width: 768px) {
++  #themeToggle .theme-label {
++    display: none;
++  }
++}
++	:root[data-theme='light'] #themeToggle {
++  border-color: var(--neon);
++  color: var(--neon);
++}
++:root[data-theme='light'] #themeToggle:hover {
++  background: var(--neon);
++  color: #fff;
++}
++:root[data-theme='dark'] .snapin-list a {
++  color: #fff;
++}
++:root[data-theme='dark'] .snapin-list a:hover {
++  background: rgba(217,4,41,0.2);
++}
++:root[data-theme='dark'] nav.sidebar {
++  background: rgba(10,10,10,0.98);
++  color: #fff;
++}
++
++:root[data-theme='dark'] nav.sidebar a {
++  color: #fff;
++}
++
++:root[data-theme='dark'] nav.sidebar a:hover {
++  color: #f1f1f1;
++}
++:root[data-theme='dark'] body {
++  color: #fff;
++}
++
++  .header-content {
++    background-color: transparent; /* Fondo totalmente transparente */
++    border-radius: 0;              /* Sin esquinas redondeadas */
++    padding: 1em 0;                /* Un poco más ajustado si quieres */
++  }
++
++#themeToggle.animate i {
++  transform: rotate(360deg);
++  transition: transform 0.6s ease;
++}
++.site-footer {
++  margin-top: 4rem;
++  padding: 2rem 1rem;
++  background-color: rgba(255,255,255,0.05);
++  border-top: 1px solid var(--neon);
++  text-align: center;
++  font-size: 0.9rem;
++  color: #ccc;
++}
++
++:root[data-theme='light'] .site-footer {
++  background-color: rgba(0, 0, 0, 0.05);
++  color: #444;
++  border-top: 1px solid var(--neon);
++}
++
++	  
