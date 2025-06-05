@@ -308,42 +308,58 @@
             </div>
         </section>
 
-        <!-- Slide 8: Comparativa (index 7) -->
-        <section id="comparativa" class="slide">
-            <div class="slide-content">
-                <h2 class="slide-title">5. FOG vs. WDS: Veredicto y Costes</h2>
-                 <div class="slide-columns-container md:flex-row-reverse"> 
-                     <div class="image-pane">
-                        <img src="https://github.com/poter69/tfghector/blob/main/images/diapo7.jpg?raw=true" alt="Comparativa FOG vs WDS">
-                    </div>
-                    <div class="text-pane">
-                        <div class="card overflow-x-auto mb-4">
-                            <h3 class="text-lg font-semibold text-red-500 mb-2">Tabla Comparativa</h3>
-                            <table class="w-full min-w-max text-left text-sm">
-                                <thead>
-                                    <tr class="border-b bg-gray-700"> 
-                                        <th class="p-2 font-semibold text-gray-200">Criterio</th>
-                                        <th class="p-2 font-semibold text-green-400">FOG Project</th>
-                                        <th class="p-2 font-semibold text-red-400">WDS</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="border-b border-gray-700"><td class="p-2">Licencia</td><td class="p-2">Libre, gratuito</td><td class="p-2">Coste SO Server</td></tr>
-                                    <tr class="border-b border-gray-700"><td class="p-2">SO Soportados</td><td class="p-2">Win, Linux, macOS</td><td class="p-2">Solo Windows</td></tr>
-                                    <tr class="border-b border-gray-700"><td class="p-2">Interfaz</td><td class="p-2">Web intuitiva</td><td class="p-2">Consola MMC</td></tr>
-                                    <tr class="border-b border-gray-700"><td class="p-2">Automatización Post</td><td class="p-2">Snapins (Alta)</td><td class="p-2">Limitada</td></tr>
-                                    <tr class="border-gray-700"><td class="p-2">Actualidad</td><td class="p-2">Activo</td><td class="p-2">Obsoleto</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="card">
-                             <h3 class="text-lg font-semibold mb-2 bar-chart-title">Coste Estimado vs. Flexibilidad</h3>
-                            <img src="https://github.com/poter69/tfghector/blob/main/images/COSTE.png?raw=true" alt="Gráfico Comparativo de Costes y Flexibilidad" class="w-full h-auto rounded-md">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<section id="comparativa" class="slide">
+  <div class="slide-content flex flex-col h-full">
+    <h2 class="slide-title">5. FOG vs. WDS: Veredicto y Costes</h2>
+    <div class="flex-1 flex flex-col md:flex-row gap-6">
+      <!-- COLUMNA IZQUIERDA: TABLA + FOTO -->
+      <div class="w-full md:w-1/2 flex flex-col gap-4">
+        <div class="card mb-2">
+          <h3 class="text-lg font-semibold text-red-500 mb-2">Tabla Comparativa</h3>
+          <div class="overflow-auto" style="max-height: 210px;">
+            <table class="w-full text-left text-sm">
+              <thead>
+                <tr class="border-b bg-gray-700"> 
+                  <th class="p-2 font-semibold text-gray-200">Criterio</th>
+                  <th class="p-2 font-semibold text-green-400">FOG Project</th>
+                  <th class="p-2 font-semibold text-red-400">WDS</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-gray-700"><td class="p-2">Licencia</td><td class="p-2">Libre, gratuito</td><td class="p-2">Coste SO Server</td></tr>
+                <tr class="border-b border-gray-700"><td class="p-2">SO Soportados</td><td class="p-2">Win, Linux, macOS</td><td class="p-2">Solo Windows</td></tr>
+                <tr class="border-b border-gray-700"><td class="p-2">Interfaz</td><td class="p-2">Web intuitiva</td><td class="p-2">Consola MMC</td></tr>
+                <tr class="border-b border-gray-700"><td class="p-2">Automatización Post</td><td class="p-2">Snapins (Alta)</td><td class="p-2">Limitada</td></tr>
+                <tr class="border-gray-700"><td class="p-2">Actualidad</td><td class="p-2">Activo</td><td class="p-2">Obsoleto</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- Foto decorativa, flexible pero nunca sale -->
+        <div class="card flex-1 flex justify-center items-center">
+          <img src="https://github.com/poter69/tfghector/blob/main/images/diapo7.jpg?raw=true"
+            alt="Comparativa FOG vs WDS"
+            class="object-contain max-h-48 w-auto h-auto rounded-md opacity-90">
+        </div>
+      </div>
+      <!-- COLUMNA DERECHA: SOLO GRÁFICO DE COSTE -->
+      <div class="w-full md:w-1/2 flex flex-col items-center justify-center">
+        <div class="card flex flex-col items-center p-2 w-full h-full">
+          <h3 class="text-lg font-semibold mb-2 bar-chart-title">Coste Estimado vs. Flexibilidad</h3>
+          <div class="flex-1 flex items-center justify-center w-full">
+            <img src="https://github.com/poter69/tfghector/blob/main/images/COSTE.png?raw=true"
+              alt="Gráfico Comparativo de Costes y Flexibilidad"
+              class="object-contain max-h-96 w-full h-auto rounded-md">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
 
         <!-- Slide 9: Otras Alternativas (index 8) -->
         <section id="otras-alternativas" class="slide">
